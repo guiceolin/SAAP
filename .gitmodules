@@ -1,0 +1,9 @@
+[submodule "puppet/modules/rbenv"]
+	path = puppet/modules/rbenv
+	url = https://github.com/justindowning/puppet-rbenv
+[submodule "puppet/modules/stdlib"]
+	path = puppet/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "puppet/modules/mysql"]
+	path = puppet/modules/mysql
+	url = git@github.com:puppetlabs/puppetlabs-mysql.git
