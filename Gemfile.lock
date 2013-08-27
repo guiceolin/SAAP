@@ -30,6 +30,7 @@ GEM
       sass (>= 3.2)
     arel (4.0.0)
     atomic (1.1.13)
+    bcrypt-ruby (3.0.1)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -152,6 +153,7 @@ PLATFORMS
 
 DEPENDENCIES
   anjlab-bootstrap-rails (>= 3.0.0.0)
+  bcrypt-ruby (~> 3.0.0)
   better_errors
   binding_of_caller
   capistrano
