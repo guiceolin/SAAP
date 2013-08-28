@@ -29,7 +29,12 @@
             <li class="dropdown-menu-title">
             </li>
             <li><a href="#"><i class="icon-user"></i> Profile</a></li>
-            <li><a href="login.html"><i class="icon-off"></i> Logout</a></li>
+            <li>
+              <%= link_to  session_path, method: :delete do %>
+                <i class='icon-off'></i>
+                <%= I18n.t('links.logout') %>
+              <% end %>
+            </li>
           </ul>
           </li>
           <!-- end: User Dropdown -->

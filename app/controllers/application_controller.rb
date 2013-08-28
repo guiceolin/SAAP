@@ -18,6 +18,12 @@ class ApplicationController < ActionController::Base
     redirect_to return_url
   end
 
+  def sign_out(user)
+    session[:user_id] = nil
+    @current_user = nil
+    redirect_to root_path
+  end
+
   def current_user
     @current_user ||= (session[:user_id] && User.find(session[:user_id]))
   end
