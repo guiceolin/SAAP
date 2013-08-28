@@ -1,0 +1,31 @@
+<%= form_for model, class: 'form-horizontal' do |f| %>
+  <fieldset class='col-sm-12'>
+    <%- attributes.each do |attribute| %>
+      <%- if attribute.is_a? Hash  %>
+        <%- options = attribute.values.first %>
+        <%- attribute = attribute.keys.first %>
+      <%- else %>
+        <%- options = {} %>
+      <%- end %>
+      <div class='form-group <%= model.errors[attribute].any? ? 'has-error' : '' %>'>
+        <%= f.label attribute, class: 'control-label' %>
+        <div class='controls row'>
+          <div class='col-lg-4'>
+            <%- if [:password, :password_confirmation].include? attribute  %>
+              <%= f.password_field attribute, class:'form-control' %>
+            <%- else %>
+              <%= f.text_field attribute, class:'form-control' %>
+            <%- end %>
+          </div>
+          <%- if model.errors[attribute].present? %>
+            <span class='help-block'><%= model.errors[attribute].join(', ') %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary"end>Save changes</button>
+      <button class="btn">Cancel</button>
+    </div>
+  </fieldset>
+<% end %>
