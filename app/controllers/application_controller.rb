@@ -5,8 +5,17 @@ class ApplicationController < ActionController::Base
 
   before_action :require_authentication
 
+  helper_method :current_user
+
+  add_flash_types :login
+
+  protected
   def sign_in(user)
     session[:user_id] = user.id
+    @current_user = user
+    return_url = session[:back_to_url] || root_path
+    session[:back_to_url] = nil
+    redirect_to return_url
   end
 
   def current_user
@@ -14,7 +23,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_authentication
-    redirect_to new_sessions_path unless current_user
+    session[:back_to_url] = request.original_url
+    redirect_to new_session_path unless current_user
   end
 
   def require_no_authentication

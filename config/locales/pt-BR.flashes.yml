@@ -1,0 +1,4 @@
+pt-BR:
+  flash:
+    login:
+      failed: Usuário ou senha invalidos!

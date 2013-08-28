@@ -44,9 +44,15 @@
   <body>
     <div class="container">
       <div class="row">
-
         <div class="row">
           <div class="login-box">
+            <%- if flash[:login] %>
+              <div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert'>×</button>
+                <strong>Ops!</strong>
+                <%= flash[:login] %>
+              </div>
+            <%- end %>
             <h2>Login to your account</h2>
             <%= yield %>
             <hr>

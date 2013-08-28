@@ -5,10 +5,11 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.where(email: params[:email])
+    user = User.where(email: params[:username]).first
     if user && user.authenticate(params[:password])
       sign_in user
     else
+      flash.now[:login] = I18n.t('flash.login.failed')
       render :new
     end
   end
