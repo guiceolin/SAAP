@@ -1,0 +1,45 @@
+<!-- start: Header -->
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".sidebar-nav.nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a id="main-menu-toggle" class="hidden-xs open"><i class="icon-reorder"></i></a>
+      <div class="row">
+        <%= link_to root_path, class: 'navbar-brand col-lg-2 col-sm-1 col-xs-12' do %>
+          <span>SAAP</span>
+        <% end %>
+      </div>
+      <!-- start: Header Menu -->
+      <div class="nav-no-collapse header-nav">
+        <ul class="nav navbar-nav pull-right">
+          <!-- start: User Dropdown -->
+          <li class="dropdown">
+          <a class="btn account dropdown-toggle" data-toggle="dropdown" href="#">
+            <div class="avatar"><img src="img/avatar.jpg" alt="Avatar"></div>
+            <div class="user">
+              <span class="hello">Welcome!</span>
+              <span class="name"><%= current_user.username %></span>
+            </div>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-menu-title">
+            </li>
+            <li><a href="#"><i class="icon-user"></i> Profile</a></li>
+            <li><a href="login.html"><i class="icon-off"></i> Logout</a></li>
+          </ul>
+          </li>
+          <!-- end: User Dropdown -->
+        </ul>
+      </div>
+      <!-- end: Header Menu -->
+
+    </div>
+  </div>
+</div>
+<!-- end: Header -->
+
+
