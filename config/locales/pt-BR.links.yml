@@ -1,3 +1,6 @@
 pt-BR:
   links:
     logout: Sair
+    list: Listar
+    import: Importar
+    new: Novo
