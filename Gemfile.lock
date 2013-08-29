@@ -81,6 +81,8 @@ GEM
     net-ssh (2.6.8)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    polyamorous (0.6.3)
+      activerecord (>= 3.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -109,6 +111,10 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.11.0)
     rake (10.1.0)
+    ransack (1.0.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      polyamorous (~> 0.6.0)
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
@@ -168,6 +174,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.0.0)
   rails-i18n (~> 4.0.0.pre)
+  ransack
   responders
   sass-rails (~> 4.0.0)
   sdoc
