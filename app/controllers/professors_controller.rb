@@ -6,7 +6,7 @@ class ProfessorsController < ApplicationController
   end
 
   def create
-    @professor = Professor.new(params[:professor].permit(:email, :password, :password_confirmation))
+    @professor = Professor.new(params[:professor].permit(:email, :password, :password_confirmation, :name, :username))
     @professor.save
     respond_with(@professor)
   end
