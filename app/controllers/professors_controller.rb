@@ -1,6 +1,10 @@
 class ProfessorsController < ApplicationController
   respond_to :html
 
+  def index
+    respond_with(@professors = Professor.all)
+  end
+
   def new
     respond_with(@professor = Professor.new)
   end
