@@ -3,7 +3,6 @@ class ProfessorsController < ApplicationController
 
   def index
     @q = Professor.search(params[:q])
-    binding.pry
     respond_with(@professors = @q.result(distinct: true))
   end
 
