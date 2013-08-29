@@ -1,4 +1,5 @@
 pt-BR:
   headers:
     new_resource: Novo(a) %{resource}
+    edit_resource: Editar %{resource}
     options: Ações
