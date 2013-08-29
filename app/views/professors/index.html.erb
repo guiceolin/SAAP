@@ -3,7 +3,7 @@
     <div class='box'>
       <div class='box-header'>
         <h2><i class="icon-list"></i>
-          <%= I18n.t('headers.list_resource', resource: Professor.model_name.human)%>
+          <%= I18n.t('headers.list_resource', resource: Professor.model_name.human(count: :many))%>
         </h2>
       </div>
       <div class='box-content'>
