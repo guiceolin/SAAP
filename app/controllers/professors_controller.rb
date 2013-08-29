@@ -2,7 +2,9 @@ class ProfessorsController < ApplicationController
   respond_to :html
 
   def index
-    respond_with(@professors = Professor.all)
+    @q = Professor.search(params[:q])
+    binding.pry
+    respond_with(@professors = @q.result(distinct: true))
   end
 
   def new
