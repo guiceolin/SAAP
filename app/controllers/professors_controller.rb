@@ -26,6 +26,12 @@ class ProfessorsController < ApplicationController
     respond_with(@professor)
   end
 
+  def destroy
+    @professor = Professor.find(params[:id])
+    @professor.destroy
+    respond_with(@professor)
+  end
+
   private
 
   def professor_params
