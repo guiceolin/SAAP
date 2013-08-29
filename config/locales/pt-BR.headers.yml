@@ -1,3 +1,4 @@
 pt-BR:
   headers:
     new_resource: Novo(a) %{resource}
+    options: Ações
