@@ -4,3 +4,9 @@ pt-BR:
       professor:
         one: Professor
         other: Professores
+    attributes:
+      user:
+        name: Nome
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de password
