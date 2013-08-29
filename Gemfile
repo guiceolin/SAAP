@@ -4,6 +4,7 @@ gem 'rails', '4.0.0'
 gem 'mysql2'
 gem 'pry-rails'
 gem 'rails-i18n', '~> 4.0.0.pre' # For 4.0.x
+gem 'responders'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
