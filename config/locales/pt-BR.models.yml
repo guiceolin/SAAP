@@ -4,6 +4,9 @@ pt-BR:
       professor:
         one: Professor
         other: Professores
+      student:
+        one: Estudante
+        other: Estudantes
     attributes:
       user:
         name: Nome
