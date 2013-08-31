@@ -1,0 +1,94 @@
+<div class='row'>
+  <div class='col-lg-12'>
+    <div class='box'>
+      <div class='box-header'>
+        <h2><i class="icon-search"></i>
+          <%= I18n.t('headers.filter_resource', resource: Student.model_name.human(count: :many))%>
+        </h2>
+        <div class='box-icon'>
+          <a href='#' class='btn-minimize'>
+            <i class='icon-chevron-up'></i>
+          </a>
+        </div>
+      </div>
+      <div class='box-content'>
+        <%= search_form_for @q, class: 'form-horizontal' do |f|  %>
+          <fieldset class='col-sm-12'>
+            <div class='form-group col-sm-4'>
+              <%= f.label :username, Student.human_attribute_name(:username), class: 'control-label' %>
+              <div class='controls row'>
+                <div class='col-lg-11'>
+                  <%= f.text_field :username_cont, class:'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class='form-group col-sm-4'>
+              <%= f.label :name, Student.human_attribute_name(:name), class: 'control-label' %>
+              <div class='controls row'>
+                <div class='col-lg-11'>
+                  <%= f.text_field :name_cont, class:'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class='form-group col-sm-4'>
+              <%= f.label :email, Student.human_attribute_name(:email), class: 'control-label' %>
+              <div class='controls row'>
+                <div class='col-lg-11'>
+                  <%= f.text_field :email_cont, class:'form-control' %>
+                </div>
+              </div>
+            </div>
+          </fieldset >
+          <fieldset class='col-sm-12'>
+            <div class="form-actions">
+              <%= f.submit I18n.t('links.filter'), class: 'btn btn-primary' %>
+              <%= link_to I18n.t('links.clear'), students_path, class: 'btn btn-default' %>
+            </div>
+
+          </fieldset>
+        <%- end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-lg-12'>
+    <div class='box'>
+      <div class='box-header'>
+        <h2><i class="icon-list"></i>
+          <%= I18n.t('headers.list_resource', resource: Student.model_name.human(count: :many))%>
+        </h2>
+      </div>
+      <div class='box-content'>
+        <table class='table table-bordered table-condensed table-striped'>
+          <thead>
+            <tr>
+              <th><%= Student.human_attribute_name(:username) %></th>
+              <th><%= Student.human_attribute_name(:name) %></th>
+              <th><%= Student.human_attribute_name(:email) %></th>
+              <th style='width: 10%'><%= I18n.t('headers.options') %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%- @students.each do |student|  %>
+              <tr>
+                <td><%= student.username %></td>
+                <td><%= student.name %></td>
+                <td><%= student.email %></td>
+                <td>
+                  <%= link_to edit_student_url(student), class: 'btn btn-info' do %>
+                    <i class='icon-edit'></i>
+                  <%- end  %>
+                  <%= link_to student_url(student),method: :delete, class: 'btn btn-danger' do %>
+                    <i class='icon-trash'></i>
+                  <%- end  %>
+                </td>
+              </tr>
+            <%- end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
