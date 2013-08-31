@@ -25,6 +25,28 @@
           </li>
         </ul>
       </li>
+      <li>
+        <%= link_to '#', class: 'dropmenu' do %>
+          <i class='icon-user'></i><span class='hidden-sm'><%= Student.model_name.human(count: :many) %></span>
+        <% end %>
+        <ul>
+          <li>
+            <%= link_to new_student_path, class: :submenu do %>
+              <i class='icon-plus'></i><span class='hidden-sm'><%= I18n.t('links.new') %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to students_path, class: :submenu do %>
+              <i class='icon-list'></i><span class='hidden-sm'><%= I18n.t('links.list') %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to import_students_path, class: :submenu do %>
+              <i class='icon-upload'></i><span class='hidden-sm'><%= I18n.t('links.import') %></span>
+            <% end %>
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
 </div>
