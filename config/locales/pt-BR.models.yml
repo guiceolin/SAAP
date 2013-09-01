@@ -7,7 +7,14 @@ pt-BR:
       student:
         one: Estudante
         other: Estudantes
+      subject:
+        one: Disciplina
+        other: Disciplinas
     attributes:
+      subject:
+        code: Código
+        name: Nome
+        description: Descrição
       user:
         name: Nome
         username: Nome de usuário
