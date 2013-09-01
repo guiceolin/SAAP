@@ -2,7 +2,7 @@ SAAP::Application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-  resources :professors, :students do
+  resources :professors, :students, :subjects do
     get :import, on: :collection
     post :upload, on: :collection
   end
