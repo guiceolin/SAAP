@@ -10,7 +10,17 @@ pt-BR:
       subject:
         one: Disciplina
         other: Disciplinas
+      crowd:
+        one: Turma
+        other: Turmas
     attributes:
+      crowd:
+        code: Código
+        name: Nome
+        year: Ano
+        semester: Semestre
+        professor: Professor Responsavel
+        subject: Disciplina
       subject:
         code: Código
         name: Nome

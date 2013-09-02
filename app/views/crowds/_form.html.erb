@@ -1,0 +1,14 @@
+<%= simple_form_for @crowd do |f| %>
+  <fieldset class='col-sm-12'>
+    <%= f.input :code %>
+    <%= f.input :name %>
+    <%= f.input :semester %>
+    <%= f.input :year %>
+    <%= f.association :professor, input_html: { data: { rel: 'chosen' } } %>
+    <%= f.association :subject, input_html: { data: { rel: 'chosen' } } %>
+    <div class="form-actions">
+      <%= f.submit class:'btn btn-primary' %>
+      <%= link_to I18n.t('links.back'), polymorphic_url(@crowd.class), class: :btn %>
+    </div>
+  </fieldset>
+<% end %>
