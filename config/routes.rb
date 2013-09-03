@@ -1,6 +1,7 @@
 SAAP::Application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
+  resource :profile, only: [:show, :edit, :update]
 
   resources :professors, :students, :subjects, :crowds do
     get :import, on: :collection

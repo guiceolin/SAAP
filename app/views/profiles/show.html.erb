@@ -1,0 +1,30 @@
+<div class='row'>
+  <div class='col-lg-12'>
+    <div class='box'>
+      <div class='box-header'>
+        <h2><i class="icon-plus"></i>
+          <%= I18n.t('profile') %>
+        </h2>
+      </div>
+      <div class='box-content'>
+        <table class='table'>
+          <tbody>
+            <tr>
+                <td><%= User.human_attribute_name(:name) %></td>
+                <td><%= current_user.name %></td>
+            </tr>
+            <tr>
+                <td><%= User.human_attribute_name(:email) %></td>
+                <td><%= current_user.email %></td>
+            </tr>
+            <tr>
+                <td><%= User.human_attribute_name(:username) %></td>
+                <td><%= current_user.username %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= link_to I18n.t('links.edit'), edit_profile_path, class: 'btn btn-success'  %>
+      </div>
+    </div>
+  </div>
+</div>
