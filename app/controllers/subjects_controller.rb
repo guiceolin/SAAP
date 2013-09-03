@@ -33,6 +33,14 @@ class SubjectsController < ApplicationController
     respond_with(@subject)
   end
 
+  def import; end
+
+  def upload
+    file = params[:upload].require(:file).tempfile
+    Subject.import file
+    redirect_to subjects_path
+  end
+
   private
 
   def subject_params
