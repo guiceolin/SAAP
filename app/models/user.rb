@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Importable
 
   validates :name, presence: true
   validates :username, :email, presence: true, uniqueness: true
