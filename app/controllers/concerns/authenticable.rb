@@ -16,7 +16,7 @@ module Concerns
       redirect_to return_url
     end
 
-    def sign_out(user)
+    def sign_out
       session[:user_id] = nil
       @current_user = nil
       redirect_to root_path
@@ -24,6 +24,8 @@ module Concerns
 
     def current_user
       @current_user ||= (session[:user_id] && User.find(session[:user_id]))
+    rescue
+      sign_out
     end
 
     def require_authentication

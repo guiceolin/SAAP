@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    sign_out current_user
+    sign_out
   end
 end
