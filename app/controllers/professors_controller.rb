@@ -33,6 +33,14 @@ class ProfessorsController < ApplicationController
     respond_with(@professor)
   end
 
+  def import; end
+
+  def upload
+    file = params[:upload].require(:file).tempfile
+    Professor.import file
+    redirect_to professors_path
+  end
+
   private
 
   def professor_params
