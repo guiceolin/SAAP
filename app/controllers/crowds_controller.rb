@@ -31,6 +31,14 @@ class CrowdsController < ApplicationController
     respond_with(@crowd)
   end
 
+  def import; end
+
+  def upload
+    file = params[:upload].required(:file).tempfile
+    Crowd.import file
+    redirect_to crowds_path
+  end
+
   private
 
   def crowd_params
