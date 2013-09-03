@@ -28,7 +28,12 @@
           <ul class="dropdown-menu">
             <li class="dropdown-menu-title">
             </li>
-            <li><a href="#"><i class="icon-user"></i> Profile</a></li>
+            <li>
+              <%= link_to profile_path do %>
+                <i class="icon-user"></i>
+                <%= I18n.t('links.profile') %>
+              <%- end %>
+            </li>
             <li>
               <%= link_to  session_path, method: :delete do %>
                 <i class='icon-off'></i>
