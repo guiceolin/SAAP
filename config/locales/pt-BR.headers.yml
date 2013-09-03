@@ -4,4 +4,5 @@ pt-BR:
     edit_resource: Editar %{resource}
     list_resource: Lista de %{resource}
     filter_resource: Filtrar %{resource}
+    import: Importar %{resource}
     options: Ações

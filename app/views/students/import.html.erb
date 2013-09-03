@@ -9,9 +9,9 @@
       <div class='box-content'>
         <%= simple_form_for :upload, url: upload_students_path do |f| %>
           <fieldset class='col-sm-12'>
-            <%= f.input :file, as: :file %>
+            <%= f.input :file, as: :file, label: I18n.t('upload.file') %>
             <div class='form-actions'>
-              <%= f.submit class: 'btn btn-primary' %>
+              <%= f.submit I18n.t('upload.save_file'), class: 'btn btn-primary' %>
               <%= link_to I18n.t('links.back'), polymorphic_url(Student), class: :btn %>
             </div>
           </fieldset>
