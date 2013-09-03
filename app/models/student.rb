@@ -1,4 +1,8 @@
 class Student < User
+
+  has_many :enrollments
+  has_many :crowds, through: :enrollments
+
   importable do |arry|
     raise Importer::InvalidFormatException if arry.size != 4
     attr = {}
