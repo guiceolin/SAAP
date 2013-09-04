@@ -21,7 +21,7 @@
           <a class="btn account dropdown-toggle" data-toggle="dropdown" href="#">
             <div class="avatar"><img src="<%= gravatar_url_for(current_user) %>" alt="Avatar"></div>
             <div class="user">
-              <span class="hello">Welcome!</span>
+              <span class="hello"><%= I18n.t('app.welcome_navbar') %></span>
               <span class="name"><%= current_user.username %></span>
             </div>
           </a>
