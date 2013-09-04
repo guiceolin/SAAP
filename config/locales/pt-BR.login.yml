@@ -1,0 +1,5 @@
+pt-BR:
+  login:
+    username: Nome de usuário
+    password: Senha
+    login_message: Entre com suas credenciais

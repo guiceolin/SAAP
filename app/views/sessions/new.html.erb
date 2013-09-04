@@ -1,9 +1,9 @@
 <%= form_tag '/session', class: 'form-horizontal' do %>
   <fieldset>
 
-    <input class="input-large col-xs-12" name="username" id="username" type="text" placeholder="type username"/>
+    <input class="input-large col-xs-12" name="username" id="username" type="text" placeholder="<%= I18n.t('login.username') %>"/>
 
-    <input class="input-large col-xs-12" name="password" id="password" type="password" placeholder="type password"/>
+    <input class="input-large col-xs-12" name="password" id="password" type="password" placeholder="<%= I18n.t('login.password') %>"/>
 
     <div class="clearfix"></div>
 
@@ -11,6 +11,6 @@
 
     <div class="clearfix"></div>
 
-    <button type="submit" class="btn btn-primary col-xs-12">Login</button>
+    <button type="submit" class="btn btn-primary col-xs-12"><%= I18n.t('links.login') %></button>
   </fieldset>
 <% end %>
