@@ -1,7 +1,7 @@
 class Student < User
 
   has_many :enrollments
-  has_many :crowds, through: :enrollments
+  has_many :crowds, through: :enrollments, dependent: :destroy
 
   importable do |arry|
     raise Importable::InvalidFormatException if arry.size != 4

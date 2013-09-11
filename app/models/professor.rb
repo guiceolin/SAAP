@@ -1,4 +1,5 @@
 class Professor < User
+  has_many :crowds, dependent: :restrict_with_error
   importable do |arry|
     raise Importable::InvalidFormatException if arry.size != 4
     attr = {}
