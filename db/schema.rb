@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130914190842) do
+ActiveRecord::Schema.define(version: 20130914215903) do
 
   create_table "crowds", force: true do |t|
     t.string   "name"
@@ -57,9 +57,10 @@ ActiveRecord::Schema.define(version: 20130914190842) do
     t.integer  "creator_id"
     t.string   "creator_type"
     t.string   "subject"
-    t.boolean  "approved",     default: true
+    t.boolean  "approved",          default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "include_professor", default: true
   end
 
   add_index "messages_topics", ["circle_id", "circle_type"], name: "index_messages_topics_on_circle_id_and_circle_type", using: :btree

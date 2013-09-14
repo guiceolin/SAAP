@@ -21,4 +21,10 @@ class TopicTest < ActiveSupport::TestCase
     skip
   end
 
+  def test_alwais_include_professor_with_crowd
+    topic = Fabricate :topic, circle: Fabricate(:crowd)
+    topic.save
+    assert topic.include_professor
+  end
+
 end
