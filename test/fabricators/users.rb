@@ -1,7 +1,7 @@
 Fabricator :user do
-  username  Fabricate.sequence(:username)
+  username  { Faker::Internet.user_name }
   name { Faker::Name.name }
-  email "email#{Fabricate.sequence(:email)}@mail.com"
+  email { Faker::Internet.email }
   password "q1w2e3r4"
   password_confirmation 'q1w2e3r4'
 end
