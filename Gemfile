@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 1.2'
 group :test do
  gem 'fabrication'
  gem 'faker'
+ gem 'minitest-ansi'
 end
 
 group :doc do
