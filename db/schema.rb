@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130914150032) do
+ActiveRecord::Schema.define(version: 20130914190842) do
 
   create_table "crowds", force: true do |t|
     t.string   "name"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20130914150032) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "messages_deliveries", force: true do |t|
+    t.integer  "message_id"
+    t.integer  "recipient_id"
+    t.boolean  "readed",       default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages_deliveries", ["message_id"], name: "index_messages_deliveries_on_message_id", using: :btree
+  add_index "messages_deliveries", ["recipient_id"], name: "index_messages_deliveries_on_recipient_id", using: :btree
 
   create_table "messages_messages", force: true do |t|
     t.text    "body"
