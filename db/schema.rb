@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20130914150032) do
     t.datetime "updated_at"
   end
 
+  create_table "messages_messages", force: true do |t|
+    t.text    "body"
+    t.integer "sender_id"
+    t.integer "topic_id"
+  end
+
+  add_index "messages_messages", ["sender_id"], name: "index_messages_messages_on_sender_id", using: :btree
+  add_index "messages_messages", ["topic_id"], name: "index_messages_messages_on_topic_id", using: :btree
+
   create_table "messages_topics", force: true do |t|
     t.integer  "circle_id"
     t.string   "circle_type"
