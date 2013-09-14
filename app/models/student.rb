@@ -3,6 +3,10 @@ class Student < User
   has_many :enrollments
   has_many :crowds, through: :enrollments, dependent: :destroy
 
+  def need_approvation?
+    true
+  end
+
   importable do |arry|
     raise Importable::InvalidFormatException if arry.size != 4
     attr = {}

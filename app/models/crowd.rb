@@ -8,6 +8,10 @@ class Crowd < ActiveRecord::Base
   has_many :enrollments
   has_many :students, through: :enrollments
 
+  def need_approvation?
+    true
+  end
+
   importable do |arry|
     attr = {}
     subject = Subject.where(code: arry.shift).first
