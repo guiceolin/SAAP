@@ -6,3 +6,9 @@ Fabricator :crowd do
   subject
   professor
 end
+
+Fabricator :crowd_with_enrollments, from: :crowd do
+  after_build do |crowd|
+    3.times { Fabricate :enrollment, crowd: crowd }
+  end
+end
