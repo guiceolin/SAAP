@@ -8,7 +8,8 @@ Fabricator :crowd do
 end
 
 Fabricator :crowd_with_enrollments, from: :crowd do
-  after_build do |crowd|
-    3.times { Fabricate :enrollment, crowd: crowd }
+  transient enrollments_count: 3
+  after_build do |crowd, transients|
+    transients[:enrollments_count].times { Fabricate :enrollment, crowd: crowd }
   end
 end
