@@ -19,4 +19,11 @@ class MessageTest < ActiveSupport::TestCase
     assert message.errors[:sender] != nil
   end
 
+  def test_has_many_deliveries
+    message = Fabricate :message
+    3.times { Fabricate "Messages::Delivery", message: message  }
+    assert message.deliveries.is_a? ActiveRecord::Relation
+    assert message.deliveries.count > 0
+  end
+
 end
