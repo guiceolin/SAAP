@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130903051927) do
+ActiveRecord::Schema.define(version: 20130914150032) do
 
   create_table "crowds", force: true do |t|
     t.string   "name"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 20130903051927) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "messages_topics", force: true do |t|
+    t.integer  "circle_id"
+    t.string   "circle_type"
+    t.integer  "creator_id"
+    t.string   "creator_type"
+    t.string   "subject"
+    t.boolean  "approved",     default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages_topics", ["circle_id", "circle_type"], name: "index_messages_topics_on_circle_id_and_circle_type", using: :btree
+  add_index "messages_topics", ["creator_id", "creator_type"], name: "index_messages_topics_on_creator_id_and_creator_type", using: :btree
 
   create_table "subjects", force: true do |t|
     t.string   "name"
