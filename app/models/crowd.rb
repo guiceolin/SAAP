@@ -16,6 +16,10 @@ class Crowd < ActiveRecord::Base
     students + Array.wrap(professor)
   end
 
+  def to_s
+    "#{subject} - #{name}"
+  end
+
   importable do |arry|
     attr = {}
     subject = Subject.where(code: arry.shift).first

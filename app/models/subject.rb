@@ -5,6 +5,10 @@ class Subject < ActiveRecord::Base
 
   has_many :crowds, dependent: :restrict_with_error
 
+  def to_s
+    name
+  end
+
   importable do |arry|
     raise Importable::InvalidFormatException.new if arry.size != 3
     attr = {}

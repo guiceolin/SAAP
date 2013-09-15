@@ -11,4 +11,9 @@ class CrowdTest < ActiveSupport::TestCase
     assert crowd.recipients_with_professor.include?(crowd.professor)
   end
 
+  def test_to_s
+    crowd = Fabricate :crowd
+    assert crowd.to_s == "#{crowd.subject} - #{crowd.name}", "current message: #{crowd.to_s}"
+  end
+
 end
