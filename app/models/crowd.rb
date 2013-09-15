@@ -12,6 +12,10 @@ class Crowd < ActiveRecord::Base
     true
   end
 
+  def recipients_with_professor
+    students + Array.wrap(professor)
+  end
+
   importable do |arry|
     attr = {}
     subject = Subject.where(code: arry.shift).first

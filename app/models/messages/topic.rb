@@ -11,6 +11,14 @@ module Messages
     before_save :check_approvation
     before_save :include_professor_when_crowd
 
+    def recipients
+      if include_professor
+        circle.recipients_with_professor
+      else
+        circle.recipients
+      end
+    end
+
     private
 
     def check_approvation

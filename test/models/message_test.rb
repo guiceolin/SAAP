@@ -26,4 +26,13 @@ class MessageTest < ActiveSupport::TestCase
     assert message.deliveries.count > 0
   end
 
+  def test_create_deliveries_after_save
+    crowd = Fabricate :crowd_with_enrollments
+    topic = Fabricate :topic, circle: crowd
+    message = Fabricate.build :message, topic: topic
+    message.save!
+    assert message.deliveries.count == topic.recipients.count
+    assert message.recipients.all? { |recipient| topic.recipients.include?(recipient) }
+  end
+
 end

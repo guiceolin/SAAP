@@ -18,13 +18,23 @@ class TopicTest < ActiveSupport::TestCase
   end
 
   def test_automatic_approvation_with_student_and_group
-    skip
+    skip "Implementar quando implementar grupos"
   end
 
   def test_alwais_include_professor_with_crowd
     topic = Fabricate :topic, circle: Fabricate(:crowd)
     topic.save
     assert topic.include_professor
+  end
+
+  def test_recipients_including_professor
+    crowd = Fabricate :crowd_with_enrollments, enrollments_count: 3
+    topic = Fabricate :topic, circle: crowd
+    assert topic.recipients.count == crowd.enrollments.count + 1
+  end
+
+  def test_recipient_not_including_professor
+    skip 'Caso de um grupo que nao inclua o professor'
   end
 
 end
