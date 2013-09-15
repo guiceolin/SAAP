@@ -5,6 +5,10 @@ class Professor < User
     false
   end
 
+  def circles
+    crowds.to_a
+  end
+
   importable do |arry|
     raise Importable::InvalidFormatException if arry.size != 4
     attr = {}
