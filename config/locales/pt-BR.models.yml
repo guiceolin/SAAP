@@ -13,6 +13,9 @@ pt-BR:
       crowd:
         one: Turma
         other: Turmas
+      'messages/topic':
+        one: Tópico
+        other: Tópicos
     attributes:
       crowd:
         code: Código
@@ -31,3 +34,7 @@ pt-BR:
         email: Email
         password: Senha
         password_confirmation: Confirmação de senha
+      'messages/topic':
+        subject: Assunto
+        circle: Círculo
+        include_professor: Incluir Professor

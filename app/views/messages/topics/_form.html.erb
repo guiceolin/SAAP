@@ -1,0 +1,30 @@
+<%= simple_nested_form_for @topic do |f| %>
+  <fieldset class='col-sm-12'>
+    <%= f.input :subject %>
+    <%= f.hidden_field :circle_type, id: 'circle_type' %>
+    <%= f.association :circle, collection: current_user.circles.map { |circle| [circle.to_s, circle.id, data: { type: circle.class.to_s }] }  %>
+    <div class='form-group'>
+      <div class='controls'>
+        <label class='checkbox inline'>
+          <div class='checker'>
+            <span>
+              <%= f.input_field :include_professor %>
+            </span>
+          </div>
+          <%= f.label :include_professor %>
+        </label>
+      </div>
+    </div>
+    <%= f.fields_for :messages do |fm| %>
+      <%= fm.input :body %>
+    <%- end %>
+    <div class='form-actions'>
+      <%= f.submit class:'btn btn-primary' %>
+      <%= link_to I18n.t('links.back'), polymorphic_url(@topic.class), class: :btn %>
+    </div>
+  </fieldset>
+<%- end %>
+
+<%= content_for :footer do %>
+  <%= javascript_include_tag 'messages/topic/new' %>
+<%- end %>
