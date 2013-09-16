@@ -1,6 +1,14 @@
 class Messages::TopicsController < ApplicationController
   respond_to :html
 
+  def index
+    respond_with @topics = current_user.topics.order('messages_topics.updated_at').distinct('messages_topics')
+  end
+
+  def show
+    respond_with @topic = Messages::Topic.find(params[:id])
+  end
+
   def new
     @topic = Messages::Topic.new
     respond_with @topic
@@ -9,11 +17,7 @@ class Messages::TopicsController < ApplicationController
   def create
     @topic = Messages::Topic.new(topic_params)
     @topic.creator = current_user
-    if @topic.save
-      redirect_to messages_path
-    else
-      render :new
-    end
+    respond_with @topic
   end
 
   private

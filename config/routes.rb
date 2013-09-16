@@ -9,7 +9,7 @@ SAAP::Application.routes.draw do
   end
 
   namespace :messages do
-    resources :topics, only: [:new, :create] do
+    resources :topics, only: [:index, :show, :new, :create] do
     end
   end
 

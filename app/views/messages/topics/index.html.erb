@@ -1,0 +1,20 @@
+<div class='col-lg-7 col-md-7 col-sm-7'>
+  <h1><%= Messages::Topic.model_name.human(count: :many) %></h1>
+  <ul class='messagesList'>
+    <%- @topics.each do |topic| %>
+      <li>
+        <%= link_to topic do %>
+        <span class='from' style='width:35%'>
+          <%= topic.circle %>
+        </span>
+        <span class='title' style='width:45%'>
+          <%= topic.subject %>
+        </span>
+        <span class='date' style='width:19%'>
+          <%= time_ago_in_words topic.updated_at %>
+        </span>
+        <% end %>
+      </li>
+    <%- end %>
+  </ul>
+</div>
