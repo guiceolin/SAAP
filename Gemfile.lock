@@ -89,6 +89,7 @@ GEM
       minitest (>= 2.5, < 5.0)
     multi_json (1.8.0)
     mysql2 (0.3.13)
+    nested_form (0.3.2)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -191,6 +192,7 @@ DEPENDENCIES
   jquery-rails
   minitest-ansi
   mysql2
+  nested_form
   pry-rails
   quiet_assets
   rails (= 4.0.0)
