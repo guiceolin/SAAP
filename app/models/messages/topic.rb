@@ -3,6 +3,7 @@ module Messages
   class Topic < ActiveRecord::Base
     belongs_to :creator, :polymorphic => true
     belongs_to :circle, :polymorphic => true
+    has_many :messages
 
     validates :circle, :subject, :creator, :presence => true
     validates :circle_type, :inclusion => { :in => %w(Crowd Group) }
@@ -10,6 +11,8 @@ module Messages
 
     before_save :check_approvation
     before_save :include_professor_when_crowd
+
+    accepts_nested_attributes_for :messages
 
     def recipients
       if include_professor
