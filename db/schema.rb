@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130914215903) do
+ActiveRecord::Schema.define(version: 20130916034045) do
 
   create_table "crowds", force: true do |t|
     t.string   "name"
@@ -43,9 +43,11 @@ ActiveRecord::Schema.define(version: 20130914215903) do
   add_index "messages_deliveries", ["recipient_id"], name: "index_messages_deliveries_on_recipient_id", using: :btree
 
   create_table "messages_messages", force: true do |t|
-    t.text    "body"
-    t.integer "sender_id"
-    t.integer "topic_id"
+    t.text     "body"
+    t.integer  "sender_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "messages_messages", ["sender_id"], name: "index_messages_messages_on_sender_id", using: :btree
