@@ -1,7 +1,7 @@
 require 'messages'
 module Messages
   class Message < ActiveRecord::Base
-    belongs_to :topic
+    belongs_to :topic, touch: true
     has_one :circle, through: :topic
     belongs_to :sender, class_name: 'User'
     has_many :deliveries

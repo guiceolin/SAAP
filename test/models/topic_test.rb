@@ -37,4 +37,11 @@ class TopicTest < ActiveSupport::TestCase
     skip 'Caso de um grupo que nao inclua o professor'
   end
 
+  def test_update_at_when_new_message_is_created
+    topic = Fabricate :topic
+    old_updated_at = topic.updated_at
+    Fabricate :message, topic: topic
+    topic.reload
+    assert old_updated_at != topic.updated_at
+  end
 end
