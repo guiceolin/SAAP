@@ -13,4 +13,16 @@ class StudentTest < ActiveSupport::TestCase
     assert student.circles.include?(crowd)
   end
 
+  def test_topics
+    student = Fabricate :student
+    crowd = Fabricate :crowd
+    Fabricate :enrollment, crowd: crowd, student: student
+    crowd_topics = []
+    crowd_topics_num = 3.times { crowd_topics << Fabricate(:topic, circle: crowd, creator: crowd.professor) }
+    unapproved_topics = []
+    unapproved_topics_count = 2.times { unapproved_topics << Fabricate(:topic, circle: crowd, creator: student) }
+    assert student.topics.count == crowd_topics_num + unapproved_topics_count, "count: #{student.topics.count}"
+    assert student.topics == (crowd_topics + unapproved_topics).sort_by(&:updated_at).reverse!
+  end
+
 end

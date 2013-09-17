@@ -2,7 +2,7 @@ class Messages::TopicsController < ApplicationController
   respond_to :html
 
   def index
-    respond_with @topics = current_user.topics.order('messages_topics.updated_at').distinct('messages_topics')
+    respond_with @topics = current_user.topics
   end
 
   def show

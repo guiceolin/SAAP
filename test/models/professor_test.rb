@@ -11,4 +11,13 @@ class ProfessorTest < ActiveSupport::TestCase
     assert professor.circles.include?(crowd)
   end
 
+  def test_topics
+    professor = Fabricate :professor
+    crowd = Fabricate :crowd, professor: professor
+    topics = []
+    topics_count = 4.times { topics << Fabricate(:topic, circle: crowd, creator: professor) }
+    assert professor.topics.count == topics_count, "count: #{professor.topics.count}"
+    assert professor.topics == topics.sort_by(&:updated_at).reverse!
+  end
+
 end
