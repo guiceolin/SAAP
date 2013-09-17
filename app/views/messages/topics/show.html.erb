@@ -20,3 +20,17 @@
     </div>
   </div>
 </div>
+
+<script id='messageTemplate' type='text/template'>
+  {{#each messages}}
+    <li>
+      <img class='avatar' alt='avatar' src="{{avatar_url}}">
+      <span class='name'>{{ sender.name }}</span>
+      <span class='time'>{{ created_at }}</span>
+      <div class='message'>
+        {{ body }}
+      </div>
+    </li>
+    {{/each}}
+</script>
+
