@@ -34,3 +34,16 @@
     {{/each}}
 </script>
 
+
+<%= content_for :footer do %>
+  <%= javascript_include_tag 'messages', 'handlebars' %>
+  <%= javascript_tag do %>
+
+    Messages.init({
+      input: document.querySelector("input.write-message"),
+      url: '/messages/topics/<%= @topic.id %>/messages',
+      template: document.querySelector('#messageTemplate'),
+      placeholder: document.querySelector('ul.talk')
+    });
+  <%- end %>
+<%- end %>
