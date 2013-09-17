@@ -10,6 +10,7 @@ SAAP::Application.routes.draw do
 
   namespace :messages do
     resources :topics, only: [:index, :show, :new, :create] do
+      resources :messages
     end
   end
 
