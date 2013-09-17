@@ -51,4 +51,4 @@
 //= require core.min.js
 //= require charts.min.js
 //= require custom.min.js
-//= require_tree .
+// require_tree .
