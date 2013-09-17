@@ -1,20 +1,31 @@
 <div class='col-lg-12 col-md-12 col-sm-12'>
-  <h1><%= Messages::Topic.model_name.human(count: :many) %></h1>
-  <ul class='messagesList'>
-    <%- @topics.each do |topic| %>
-      <li>
-        <%= link_to topic do %>
-        <span class='from' style='width:35%'>
-          <%= topic.circle %>
-        </span>
-        <span class='title' style='width:45%'>
-          <%= topic.subject %>
-        </span>
-        <span class='date' style='width:19%'>
-          <%= time_ago_in_words topic.updated_at %>
-        </span>
-        <% end %>
-      </li>
-    <%- end %>
-  </ul>
+  <div class='box'>
+    <div class='box-header'>
+      <h2><%= Messages::Topic.model_name.human(count: :many) %></h2>
+      <div class='box-icon'>
+        <%= link_to new_messages_topic_path do %>
+          <i class='icon-plus'></i>
+        <%- end %>
+      </div>
+    </div>
+    <div class='box-content' style='background-color: rgb(245,245,245)'>
+      <ul class='messagesList'>
+        <%- @topics.each do |topic| %>
+          <li>
+            <%= link_to topic do %>
+            <span class='from' style='width:35%'>
+              <%= topic.circle %>
+            </span>
+            <span class='title' style='width:45%'>
+              <%= topic.subject %>
+            </span>
+            <span class='date' style='width:19%'>
+              <%= time_ago_in_words topic.updated_at %>
+            </span>
+            <% end %>
+          </li>
+        <%- end %>
+      </ul>
+    </div>
+  </div>
 </div>
