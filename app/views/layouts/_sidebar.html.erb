@@ -5,6 +5,23 @@
     <ul class="nav nav-tabs nav-stacked main-menu">
       <li>
         <%= link_to '#', class: 'dropmenu' do %>
+          <i class='icon-envelope'></i><span class='hidden-sm'><%= Messages::Topic.model_name.human(count: :many) %></span>
+        <%- end %>
+        <ul>
+          <li>
+            <%= link_to new_messages_topic_path, class: :submenu do %>
+              <i class='icon-plus'></i><span class='hidden-sm'><%= I18n.t('links.new') %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to messages_topics_path, class: :submenu do %>
+              <i class='icon-list'></i><span class='hidden-sm'><%= I18n.t('links.list') %></span>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <%= link_to '#', class: 'dropmenu' do %>
           <i class='icon-user'></i><span class='hidden-sm'><%= Professor.model_name.human(count: :many) %></span>
         <% end %>
         <ul>
