@@ -28,6 +28,7 @@ group :test do
  gem 'fabrication'
  gem 'faker'
  gem 'minitest-ansi'
+ gem 'delorean'
 end
 
 group :doc do
