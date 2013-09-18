@@ -44,4 +44,19 @@ class TopicTest < ActiveSupport::TestCase
     topic.reload
     assert old_updated_at != topic.updated_at
   end
+
+  def test_create_welcome_message_when_create_approved_topic
+    professor = Fabricate :professor
+    topic = Fabricate :topic, creator: professor, approved: true
+    assert topic.messages.count == 1
+  end
+
+  def test_create_welcome_message_when_already_created
+    professor = Fabricate :professor
+    topic = Fabricate :topic, creator: professor, approved: true
+    assert topic.messages.count == 1
+    messages_count = 3.times { Fabricate :message, topic: topic, sender: professor }
+    topic.save
+    assert topic.messages.count == 1 + messages_count
+  end
 end

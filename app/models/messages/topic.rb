@@ -11,6 +11,7 @@ module Messages
 
     before_save :check_approvation
     before_save :include_professor_when_crowd
+    after_save :create_welcome_message
 
     accepts_nested_attributes_for :messages
 
@@ -23,6 +24,12 @@ module Messages
     end
 
     private
+
+    def create_welcome_message
+      if self.approved && self.messages.none?
+        messages << Messages::Message.create(sender: self.creator, body: I18n.t('messages.welcome_message'), readed: true)
+      end
+    end
 
     def check_approvation
       if creator.need_approvation? && circle.need_approvation?
