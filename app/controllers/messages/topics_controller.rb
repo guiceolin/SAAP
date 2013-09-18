@@ -17,6 +17,7 @@ class Messages::TopicsController < ApplicationController
   def create
     @topic = Messages::Topic.new(topic_params)
     @topic.creator = current_user
+    @topic.save
     respond_with @topic
   end
 
