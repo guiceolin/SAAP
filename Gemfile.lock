@@ -1,8 +1,8 @@
 GIT
   remote: git@github.com:plataformatec/simple_form.git
-  revision: f0b95cb9805ebc895947cafaf33a07b67eeb8c71
+  revision: 028e762f00645fcd89ef213c9c74d9bfcf7222f5
   specs:
-    simple_form (3.0.0.rc)
+    simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
 
@@ -33,7 +33,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
-    anjlab-bootstrap-rails (3.0.0.2)
+    anjlab-bootstrap-rails (3.0.0.3)
       railties (>= 3.0)
       sass (>= 3.2)
     ansi (1.4.3)
@@ -67,7 +67,7 @@ GEM
       chronic
     erubis (2.7.0)
     execjs (2.0.1)
-    fabrication (2.8.0)
+    fabrication (2.8.1)
     faker (1.2.0)
       i18n (~> 0.5)
     highline (1.6.19)
@@ -140,7 +140,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
-    responders (0.6.5)
+    responders (1.0.0)
+      railties (>= 3.2, < 5)
     sass (3.2.10)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
