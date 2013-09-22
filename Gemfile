@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '~> 4.0.0'
 gem 'mysql2'
 gem 'pry-rails'
 gem 'rails-i18n', '~> 4.0.0.pre' # For 4.0.x
@@ -8,13 +8,13 @@ gem 'responders'
 gem 'ransack'
 
 gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 gem 'simple_form', git: 'git@github.com:plataformatec/simple_form.git'
 gem 'nested_form'
-gem 'validates_timeliness', '~> 3.0'
+gem 'validates_timeliness'
 gem 'cancan'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -24,7 +24,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 group :test do
  gem 'fabrication'
@@ -46,7 +46,7 @@ group :development do
 end
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby'
 
 # Use unicorn as the app server
 gem 'unicorn'

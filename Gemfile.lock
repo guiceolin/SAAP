@@ -39,7 +39,7 @@ GEM
     ansi (1.4.3)
     arel (4.0.0)
     atomic (1.1.14)
-    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.1.2)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -189,23 +189,23 @@ PLATFORMS
 
 DEPENDENCIES
   anjlab-bootstrap-rails (>= 3.0.0.0)
-  bcrypt-ruby (~> 3.0.0)
+  bcrypt-ruby
   better_errors
   binding_of_caller
   cancan
   capistrano
-  coffee-rails (~> 4.0.0)
+  coffee-rails
   delorean
   fabrication
   faker
-  jbuilder (~> 1.2)
+  jbuilder
   jquery-rails
   minitest-ansi
   mysql2
   nested_form
   pry-rails
   quiet_assets
-  rails (= 4.0.0)
+  rails (~> 4.0.0)
   rails-i18n (~> 4.0.0.pre)
   ransack
   responders
@@ -214,6 +214,6 @@ DEPENDENCIES
   simple_form!
   therubyracer
   turbolinks
-  uglifier (>= 1.3.0)
+  uglifier
   unicorn
-  validates_timeliness (~> 3.0)
+  validates_timeliness
