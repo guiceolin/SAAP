@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130916034045) do
+ActiveRecord::Schema.define(version: 20130922153140) do
 
   create_table "crowds", force: true do |t|
     t.string   "name"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20130916034045) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "enunciations", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.date     "end_at"
+    t.integer  "crowd_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "enunciations", ["crowd_id"], name: "index_enunciations_on_crowd_id", using: :btree
 
   create_table "messages_deliveries", force: true do |t|
     t.integer  "message_id"
