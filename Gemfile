@@ -31,6 +31,7 @@ group :test do
  gem 'faker'
  gem 'minitest-ansi'
  gem 'delorean'
+ gem 'coveralls', :require => false
 end
 
 group :doc do
@@ -42,7 +43,6 @@ group :development do
   gem 'better_errors'
   gem "binding_of_caller"
   gem 'quiet_assets'
-
 end
 
 # Use ActiveModel has_secure_password
