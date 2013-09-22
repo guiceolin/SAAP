@@ -1,12 +1,12 @@
 [submodule "puppet/modules/rbenv"]
 	path = puppet/modules/rbenv
-	url = https://github.com/justindowning/puppet-rbenv
+	url = git://github.com/justindowning/puppet-rbenv.git
 [submodule "puppet/modules/stdlib"]
 	path = puppet/modules/stdlib
-	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+	url = git://github.com/puppetlabs/puppetlabs-stdlib.git
 [submodule "puppet/modules/mysql"]
 	path = puppet/modules/mysql
-	url = git@github.com:puppetlabs/puppetlabs-mysql.git
+	url = git://github.com/puppetlabs/puppetlabs-mysql.git
 [submodule "puppet/modules/vcsrepo"]
 	path = puppet/modules/vcsrepo
-	url = git@github.com:puppetlabs/puppetlabs-vcsrepo.git
+	url = git://github.com/puppetlabs/puppetlabs-vcsrepo.git
