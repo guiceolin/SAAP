@@ -31,6 +31,10 @@ group :test do
  gem 'faker'
  gem 'minitest-ansi'
  gem 'delorean'
+
+ # Other DBs env, for travis
+ gem 'pg'
+ gem 'sqlite3'
 end
 
 group :doc do
