@@ -1,4 +1,5 @@
 class CrowdsController < ApplicationController
+  authorize_resource
   respond_to :html
   def index
     @q = Crowd.search(params[:q])
