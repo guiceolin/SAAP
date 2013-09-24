@@ -16,6 +16,10 @@ class CrowdsController < ApplicationController
     respond_with(@crowd)
   end
 
+  def show
+    respond_with(@crowd = Crowd.find(params[:id]))
+  end
+
   def edit
     respond_with(@crowd = Crowd.find(params[:id]))
   end

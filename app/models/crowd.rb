@@ -9,6 +9,8 @@ class Crowd < ActiveRecord::Base
   has_many :students, through: :enrollments
   has_many :topics, class_name: 'Messages::Topic', as: :circle
 
+  has_many :enunciations
+
   def need_approvation?
     true
   end

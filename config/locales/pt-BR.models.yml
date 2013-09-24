@@ -1,6 +1,9 @@
 pt-BR:
   activerecord:
     models:
+      enunciation:
+        one: Enunciado
+        other: Enunciados
       professor:
         one: Professor
         other: Professores
@@ -17,6 +20,9 @@ pt-BR:
         one: Tópico
         other: Tópicos
     attributes:
+      enunciation:
+        name: Nome
+        end_at: Data final
       crowd:
         code: Código
         name: Nome
