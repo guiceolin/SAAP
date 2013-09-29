@@ -64,7 +64,7 @@ GEM
     delorean (2.1.0)
       chronic
     erubis (2.7.0)
-    execjs (2.0.1)
+    execjs (2.0.2)
     fabrication (2.8.1)
     faker (1.2.0)
       i18n (~> 0.5)
@@ -142,7 +142,7 @@ GEM
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    sass (3.2.10)
+    sass (3.2.11)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
@@ -177,7 +177,7 @@ GEM
       atomic
     tilt (1.4.1)
     timeliness (0.3.7)
-    tins (0.10.0)
+    tins (0.11.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
