@@ -8,7 +8,7 @@ class Ability
       can :manage, Subject
       can :manage, Student
       can :manage, Professor
-      can :manage, Enrollments
+      can :manage, Enrollment
     elsif user.is_a? Professor
       can :manage, Messages::Topic
       can :read, Crowd
