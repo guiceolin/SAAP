@@ -15,6 +15,7 @@
 // require turbolinks
 //= require jquery-migrate-1.2.1.min.js
 //= require jquery-ui-1.10.3.custom.min.js
+//= require jquery.ui.datepicker-pt-BR.js
 //= require jquery.ui.touch-punch.js
 //= require modernizr.js
 //= require bootstrap.min.js
