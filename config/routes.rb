@@ -1,12 +1,18 @@
 SAAP::Application.routes.draw do
 
-  resource :session, only: [:new, :create, :destroy]
-  resource :profile, only: [:show, :edit, :update]
-
-  resources :professors, :students, :subjects, :crowds do
+  concern :importable do
     get :import, on: :collection
     post :upload, on: :collection
   end
+
+  resource :session, only: [:new, :create, :destroy]
+  resource :profile, only: [:show, :edit, :update]
+
+  resources :crowds, concerns: [:importable] do
+    resources :enunciations
+  end
+
+  resources :professors, :students, :subjects, concerns: [:importable]
 
   namespace :messages do
     resources :topics, only: [:index, :show, :new, :create] do

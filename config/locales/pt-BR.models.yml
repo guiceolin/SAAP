@@ -23,6 +23,8 @@ pt-BR:
       enunciation:
         name: Nome
         end_at: Data final
+        description: Descrição
+        crowd: Turma
       crowd:
         code: Código
         name: Nome

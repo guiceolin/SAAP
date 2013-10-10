@@ -1,0 +1,12 @@
+<%= simple_form_for [@enunciation.crowd, @enunciation] do |f| %>
+  <fieldset class='col-sm-12'>
+    <%= f.input :name  %>
+    <%= f.input :description %>
+    <%= f.association :crowd, disabled: true %>
+    <%= f.input :end_at, as: :string, input_html: { class: 'datepicker'}  %>
+    <div class='form-actions'>
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to I18n.t('links.back'), :back, class: 'btn' %>
+    </div>
+  </fieldset>
+<%- end %>
