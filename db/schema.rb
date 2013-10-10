@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131010004759) do
+ActiveRecord::Schema.define(version: 20131010012522) do
 
   create_table "crowds", force: true do |t|
     t.string   "name"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20131010004759) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "crowds", ["professor_id"], name: "index_crowds_on_professor_id", using: :btree
+  add_index "crowds", ["subject_id"], name: "index_crowds_on_subject_id", using: :btree
 
   create_table "enrollments", force: true do |t|
     t.integer  "student_id"
