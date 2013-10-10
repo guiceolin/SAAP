@@ -6,10 +6,21 @@ require 'minitest/ansi'
 require 'coveralls'
 Coveralls.wear!('rails')
 
+require 'database_cleaner'
+DatabaseCleaner.strategy = :transaction
+
 MiniTest::ANSI.use!
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
+
+  def setup
+    DatabaseCleaner.start
+  end
+
+  def teardown
+    DatabaseCleaner.clean
+  end
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #

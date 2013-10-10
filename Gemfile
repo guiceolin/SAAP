@@ -32,6 +32,7 @@ group :test do
  gem 'minitest-ansi'
  gem 'delorean'
  gem 'coveralls', :require => false
+ gem 'database_cleaner'
 end
 
 group :doc do

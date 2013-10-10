@@ -58,6 +58,7 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
+    database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     delorean (2.1.0)
       chronic
@@ -203,6 +204,7 @@ DEPENDENCIES
   capistrano
   coffee-rails
   coveralls
+  database_cleaner
   delorean
   fabrication
   faker
