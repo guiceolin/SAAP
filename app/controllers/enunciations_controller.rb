@@ -10,10 +10,15 @@ class EnunciationsController < ApplicationController
     @enunciation = Enunciation.new(enunciation_params)
     @enunciation.crowd = Crowd.find(params[:crowd_id])
     if @enunciation.save
-      redirect_to crowds_path
+      redirect_to dashboard_path
     else
       render :new
     end
+  end
+
+  def show
+    @enunciation = Enunciation.find(params[:id])
+    respond_with @enunciation
   end
 
   private
