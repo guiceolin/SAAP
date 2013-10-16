@@ -11,6 +11,7 @@ SAAP::Application.routes.draw do
   resources :crowds, concerns: [:importable] do
     resources :enunciations
   end
+  resource :dashboard, only: :show
 
   resources :professors, :students, :subjects, concerns: [:importable]
 
@@ -24,7 +25,7 @@ SAAP::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'dashboard#index'
+  root 'dashboards#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,30 @@
+<%- @crowds.each do |crowd| %>
+  <div class='col-lg-4'>
+    <div class='row'>
+      <div class='col-lg-12 col-md-12 col-sm-12'>
+        <div class='box'>
+          <div class='box-header'>
+            <h2>
+              <%= crowd %>
+            </h2>
+            <div class='box-icon'>
+              <%= link_to new_crowd_enunciation_path(crowd) do %>
+                <i class='icon-plus'></i>
+              <%- end %>
+            </div>
+          </div>
+          <div class='box-content'>
+            <ul class='dashboard-list'>
+              <%- crowd.enunciations.each do |enun| %>
+                <li>
+                  <%= link_to enun, crowd_enunciation_path(crowd, enun) %>
+                </li>
+              <%- end %>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<%- end %>
