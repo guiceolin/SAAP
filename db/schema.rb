@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131016004327) do
+ActiveRecord::Schema.define(version: 20131017205109) do
 
   create_table "crowds", force: true do |t|
     t.string   "name"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 20131016004327) do
   end
 
   add_index "groups", ["enunciation_id"], name: "index_groups_on_enunciation_id", using: :btree
+
+  create_table "memberships", force: true do |t|
+    t.integer "student_id"
+    t.integer "group_id"
+  end
+
+  add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
+  add_index "memberships", ["student_id"], name: "index_memberships_on_student_id", using: :btree
 
   create_table "messages_deliveries", force: true do |t|
     t.integer  "message_id"
@@ -118,6 +126,9 @@ ActiveRecord::Schema.define(version: 20131016004327) do
   add_foreign_key "enunciations", "crowds", name: "enunciations_crowd_id_fk"
 
   add_foreign_key "groups", "enunciations", name: "groups_enunciation_id_fk"
+
+  add_foreign_key "memberships", "groups", name: "memberships_group_id_fk", dependent: :delete
+  add_foreign_key "memberships", "users", name: "memberships_student_id_fk", column: "student_id", dependent: :delete
 
   add_foreign_key "messages_deliveries", "messages_messages", name: "messages_deliveries_message_id_fk", column: "message_id"
   add_foreign_key "messages_deliveries", "users", name: "messages_deliveries_recipient_id_fk", column: "recipient_id"
