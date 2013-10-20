@@ -2,6 +2,8 @@ class Student < User
 
   has_many :enrollments, dependent: :destroy
   has_many :crowds, through: :enrollments
+  has_many :memberships, dependent: :destroy
+  has_many :groups, through: :memberships
 
   def need_approvation?
     true

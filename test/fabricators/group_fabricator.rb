@@ -1,4 +1,5 @@
 Fabricator(:group) do
   name        "MyString"
-  enunciation nil
+  enunciation
+  students
 end

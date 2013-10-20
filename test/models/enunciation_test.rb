@@ -21,4 +21,13 @@ class EnunciationTest < ActiveSupport::TestCase
     assert enun.valid?, "finish date must be today or future"
   end
 
+  test 'ungrouped users' do
+    crowd = Fabricate :crowd_with_enrollments
+    ungrouped_students = crowd.students
+    grouped_student = ungrouped_students.shift
+    enun = Fabricate :enunciation, crowd: crowd
+    Fabricate :group, enunciation: enun, students: [grouped_student]
+    assert enun.ungrouped_students, ungrouped_students
+  end
+
 end
