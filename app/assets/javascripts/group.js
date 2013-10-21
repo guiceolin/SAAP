@@ -20,6 +20,7 @@
           $form.hide();
           $link.show();
         }
+        location.reload();
       }
     });
   });
@@ -30,6 +31,17 @@
     $link.hide();
     $form.show();
     $('select', $form).chosen('destroy').chosen();
+  });
 
+  $('a.group-delete-link').on('click', function(){
+    $link = getDiv(this);
+    $.ajax({
+      type: 'DELETE',
+      url: this.href
+    }).success(function(data){
+      $link.closest('li').remove();
+      window.location.reload();
+    });
+    return false;
   });
 })();

@@ -29,11 +29,14 @@
                   <%= group.name %>
                 <% end %>
               </span>
-              <span class='members'><%= group.students.map(&:name) %></span>
+              <span class='members'><%= group.students.map(&:name).join(',') %></span>
               <span class='actions'>
                 <%= link_to "#", class: 'group-edit-link' do %>
                   <i class='icon-pencil'></i>
-                  <% end %>
+                <% end %>
+                <%= link_to group, method: :delete, class: 'group-delete-link' do %>
+                  <i class='icon-remove'></i>
+                <% end %>
               </span>
             </div>
             <%= simple_form_for group, html: { class: 'form-inline group-form', style: 'display:none'} do |f| %>

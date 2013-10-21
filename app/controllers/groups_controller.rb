@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.save!
-    respond_with @group
+    redirect_to [@group.enunciation.crowd, @group.enunciation]
   end
 
   def update
@@ -13,6 +13,12 @@ class GroupsController < ApplicationController
     else
       render json: { errors: @group.errors.to_json }
     end
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    head :ok
   end
 
   private
