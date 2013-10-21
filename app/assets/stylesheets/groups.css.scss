@@ -1,0 +1,25 @@
+ul.group-list {
+  li {
+    div.group-div {
+      span {
+        display: inline-block;
+      }
+      span.name {
+        width: 20%
+      }
+      span.members {
+        width: 40%;
+        margin-left: 2%
+      }
+    }
+    form {
+      input.name {
+        width: 20%
+      }
+      select.members {
+        width: 40%;
+        margin-left: 2%
+      }
+    }
+  }
+}

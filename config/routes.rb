@@ -13,6 +13,8 @@ SAAP::Application.routes.draw do
   end
   resource :dashboard, only: :show
 
+  resources :groups, only: [:show, :create, :update, :destroy]
+
   resources :professors, :students, :subjects, concerns: [:importable]
 
   namespace :messages do
