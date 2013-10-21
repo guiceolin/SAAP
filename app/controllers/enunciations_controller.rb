@@ -16,6 +16,21 @@ class EnunciationsController < ApplicationController
     end
   end
 
+  def edit
+    @enunciation = Enunciation.find(params[:id])
+    respond_with @enunciation
+  end
+
+  def update
+    @enunciation = Enunciation.find(params[:id])
+    @enunciation.crowd = Crowd.find(params[:crowd_id])
+    if @enunciation.update_attributes(enunciation_params)
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
+  end
+
   def show
     @enunciation = Enunciation.find(params[:id])
     respond_with @enunciation
