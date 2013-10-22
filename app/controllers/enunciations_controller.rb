@@ -45,7 +45,7 @@ class EnunciationsController < ApplicationController
 
   private
   def enunciation_params
-    params.require(:enunciation).permit(:name, :description, :end_at, :crowd_id, attachments_attributes: [ :document])
+    params.require(:enunciation).permit(:name, :description, :end_at, :crowd_id, attachments_attributes: [ :document, '_destroy', 'id'])
   end
 
   def clone_params

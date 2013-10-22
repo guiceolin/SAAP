@@ -9,7 +9,7 @@ class Enunciation < ActiveRecord::Base
   has_many :students, through: :crowd
   has_many :attachments, as: :attachable
 
-  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
 
   def ungrouped_students
     students - grouped_students
