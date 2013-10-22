@@ -17,6 +17,7 @@ class Enunciation < ActiveRecord::Base
 
   def clone_for_crowd(crowd_id)
     cloned = self.class.new(name: self.name + ' - Clone', description: self.description, end_at: 1.day.from_now )
+    cloned.clone_attachments(self)
     cloned.clone_groups(self) if crowd_id.to_i == self.crowd_id
     cloned
   end
@@ -29,6 +30,12 @@ class Enunciation < ActiveRecord::Base
     enum.groups.each do |g|
       group = Group.create(name: g.name, enunciation: self)
       g.students.map { |s| group.students << s }
+    end
+  end
+
+  def clone_attachments(enum)
+    enum.attachments.each do |a|
+      Attachment.create!(document: a.document, attachable: self)
     end
   end
 
