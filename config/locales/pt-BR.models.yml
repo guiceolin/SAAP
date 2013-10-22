@@ -19,7 +19,12 @@ pt-BR:
       'messages/topic':
         one: Tópico
         other: Tópicos
+      group:
+        one: Grupo
+        other: Grupos
     attributes:
+      group:
+        name: Nome
       enunciation:
         name: Nome
         end_at: Data final
