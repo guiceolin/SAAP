@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'nested_form'
 gem 'validates_timeliness'
 gem 'cancan'
+gem 'paperclip'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby

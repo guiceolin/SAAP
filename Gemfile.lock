@@ -44,6 +44,10 @@ GEM
       rake (>= 10.0.0)
       sshkit (>= 0.0.23)
     chronic (0.10.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.2)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.0.9)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -95,6 +99,11 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
+    paperclip (3.5.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.0)
+      mime-types
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.3)
@@ -216,6 +225,7 @@ DEPENDENCIES
   minitest-ansi
   mysql2
   nested_form
+  paperclip
   pry-rails
   quiet_assets
   rails (~> 4.0.0)
