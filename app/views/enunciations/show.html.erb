@@ -12,6 +12,22 @@
     <%= @enunciation.description %>
   </h2>
   <h3><span><%= Enunciation.human_attribute_name(:end_at) %>: </span><%=l @enunciation.end_at %></h3>
+  <div class='box'>
+    <div class='box-header'>
+      <h2>
+        <%= Attachment.model_name.human(count: :many) %>
+      </h2>
+    </div>
+    <div class='box-content'>
+      <ul>
+        <%- @enunciation.attachments.each do |attach| %>
+          <li>
+            <%= link_to attach.document_file_name, attach.document.url %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
   <div class='box'>
     <div class='box-header'>

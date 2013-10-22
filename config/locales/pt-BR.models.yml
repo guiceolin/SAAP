@@ -22,6 +22,9 @@ pt-BR:
       group:
         one: Grupo
         other: Grupos
+      attachment:
+        one: Anexo
+        other: Anexos
     attributes:
       group:
         name: Nome
