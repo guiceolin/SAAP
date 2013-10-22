@@ -1,9 +1,13 @@
-<%= simple_form_for [@enunciation.crowd, @enunciation] do |f| %>
+<%= simple_nested_form_for [@enunciation.crowd, @enunciation] do |f| %>
   <fieldset class='col-sm-12'>
     <%= f.input :name  %>
     <%= f.input :description %>
     <%= f.association :crowd, disabled: true %>
     <%= f.input :end_at, as: :string, input_html: { class: 'datepicker'}  %>
+    <p><%= f.link_to_add "Add attachment", :attachments %></p>
+    <%= f.fields_for :attachments do |fd| %>
+      <%= fd.input :document, as: :file %>
+    <% end %>
     <div class='form-actions'>
       <%= f.submit class: 'btn btn-primary' %>
       <%= link_to I18n.t('links.back'), :back, class: 'btn' %>

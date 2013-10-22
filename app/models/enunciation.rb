@@ -7,6 +7,9 @@ class Enunciation < ActiveRecord::Base
   has_many :groups
   has_many :grouped_students, class_name: 'Student', through: :groups, source: :students
   has_many :students, through: :crowd
+  has_many :attachments, as: :attachable
+
+  accepts_nested_attributes_for :attachments
 
   def ungrouped_students
     students - grouped_students
