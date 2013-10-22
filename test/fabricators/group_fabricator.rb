@@ -1,5 +1,5 @@
 Fabricator(:group) do
-  name        "MyString"
+  name        { Faker::Lorem.sentence(3) }
   enunciation
   students
 end

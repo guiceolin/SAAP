@@ -22,6 +22,9 @@
                     <%= link_to edit_crowd_enunciation_path(crowd, enun) do %>
                       <i class='icon-pencil'></i>
                     <% end %>
+                    <%= link_to clone_crowd_enunciation_path(crowd, enun), class: 'clone-modal', data: { id: enun.id } do %>
+                      <i class='icon-copy'></i>
+                    <% end %>
                   </span>
                 </li>
               <%- end %>
@@ -33,3 +36,30 @@
     </div>
   </div>
 <%- end %>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for :clone_enunciation do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Clonar para</h4>
+      </div>
+      <div class="modal-body">
+        <%= f.hidden_field :origin_id %>
+        <%= f.select :target_id, current_user.crowds.collect { |c| [c.to_s, c.id] } %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= f.submit 'Ok', class: 'btn btn-primary' %>
+      </div>
+    </div><!-- /.modal-content -->
+    <% end %>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<%= content_for :footer do %>
+  <%= javascript_include_tag :dashboard %>
+<% end %>

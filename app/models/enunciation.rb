@@ -12,8 +12,21 @@ class Enunciation < ActiveRecord::Base
     students - grouped_students
   end
 
+  def clone_for_crowd(crowd_id)
+    cloned = self.class.new(name: self.name + ' - Clone', description: self.description, end_at: 1.day.from_now )
+    cloned.clone_groups(self) if crowd_id.to_i == self.crowd_id
+    cloned
+  end
+
   def to_s
     name
+  end
+
+  def clone_groups(enum)
+    enum.groups.each do |g|
+      group = Group.create(name: g.name, enunciation: self)
+      g.students.map { |s| group.students << s }
+    end
   end
 
 end

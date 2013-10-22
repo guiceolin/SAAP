@@ -31,6 +31,13 @@ class EnunciationsController < ApplicationController
     end
   end
 
+  def clone
+    @new_enunciation = Enunciation.find(params[:id]).clone_for_crowd(clone_params[:target_id])
+    @new_enunciation.crowd = Crowd.find(clone_params[:target_id])
+    @new_enunciation.save!
+    redirect_to edit_crowd_enunciation_path(@new_enunciation.crowd, @new_enunciation)
+  end
+
   def show
     @enunciation = Enunciation.find(params[:id])
     respond_with @enunciation
@@ -39,6 +46,10 @@ class EnunciationsController < ApplicationController
   private
   def enunciation_params
     params[:enunciation].permit(:name, :description, :end_at, :crowd_id)
+  end
+
+  def clone_params
+    params[:clone_enunciation].permit(:origin_id, :target_id)
   end
 
 end

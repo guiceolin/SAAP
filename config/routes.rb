@@ -9,7 +9,9 @@ SAAP::Application.routes.draw do
   resource :profile, only: [:show, :edit, :update]
 
   resources :crowds, concerns: [:importable] do
-    resources :enunciations
+    resources :enunciations do
+      post :clone, on: :member
+    end
   end
   resource :dashboard, only: :show
 
