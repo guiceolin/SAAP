@@ -4,10 +4,28 @@
     <%= f.input :description %>
     <%= f.association :crowd, disabled: true %>
     <%= f.input :end_at, as: :string, input_html: { class: 'datepicker'}  %>
-    <p><%= f.link_to_add "Add attachment", :attachments %></p>
-    <%= f.fields_for :attachments do |fd| %>
-      <%= fd.input :document, as: :file %>
-    <% end %>
+    <fieldset>
+      <legend>
+        Anexos
+        <%= f.link_to_add "<i class='icon-plus'></i>".html_safe, :attachments, data: { target: '#attachments-placeholder'} %>
+      </legend>
+      <div id='attachments-placeholder'>
+        <%= f.fields_for :attachments do |fd| %>
+        <div class='row'>
+          <div class='col-lg-4 col-md-4 col-sm-4'>
+            <%- if fd.object.persisted? %>
+              <%= link_to fd.object.document_file_name, fd.object.document.url %>
+            <%- else %>
+              <%= fd.input_field :document, as: :file %>
+            <% end %>
+          </div>
+          <div class='col-lg-4 col-md-4 col-sm-4'>
+            <%= fd.link_to_remove '<i class="icon-remove"></i>'.html_safe %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </fieldset>
     <div class='form-actions'>
       <%= f.submit class: 'btn btn-primary' %>
       <%= link_to I18n.t('links.back'), :back, class: 'btn' %>
