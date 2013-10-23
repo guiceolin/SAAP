@@ -10,7 +10,7 @@ class Student < User
   end
 
   def circles
-    crowds.to_a
+    crowds.to_a + groups.to_a
   end
 
   importable do |arry|

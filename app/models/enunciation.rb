@@ -11,6 +11,8 @@ class Enunciation < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true, reject_if: proc { |attributes| attributes['document'].blank? }
 
+  delegate :professor, :subject, to: :crowd
+
   def ungrouped_students
     students - grouped_students
   end

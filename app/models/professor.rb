@@ -1,12 +1,14 @@
 class Professor < User
   has_many :crowds, dependent: :restrict_with_error
+  has_many :enunciations, through: :crowds
+  has_many :groups, through: :enunciations
 
   def need_approvation?
     false
   end
 
   def circles
-    crowds.to_a
+    crowds.to_a + groups.to_a
   end
 
   importable do |arry|
