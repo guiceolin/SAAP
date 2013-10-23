@@ -10,7 +10,7 @@
     </div>
     <div class='box-content' style='background-color: rgb(245,245,245)'>
       <ul class='messagesList'>
-        <%- @topics.each do |topic| %>
+        <%- current_user.approved_topics.each do |topic| %>
           <li>
             <%= link_to topic do %>
             <span class='from' style='width:35%'>
@@ -28,4 +28,55 @@
       </ul>
     </div>
   </div>
+  <%- if can? :approve, Messages::Topic %>
+    <div class='box'>
+      <div class='box-header'>
+        <h2>Aprovar <%= Messages::Topic.model_name.human(count: :many) %></h2>
+      </div>
+      <div class='box-content' style='background-color: rgb(245,245,245)'>
+        <ul class='messagesList'>
+          <%- current_user.unapproved_topics.each do |topic| %>
+            <li>
+              <%= link_to topic do %>
+              <span class='from' style='width:35%'>
+                <%= topic.circle %>
+              </span>
+              <span class='title' style='width:45%'>
+                <%= topic.subject %>
+              </span>
+              <span class='date' style='width:19%'>
+                <%= time_ago_in_words topic.updated_at %>
+              </span>
+              <% end %>
+            </li>
+          <%- end %>
+        </ul>
+      </div>
+    </div>
+    <div class='box'>
+      <div class='box-header'>
+        <h2><%= Messages::Topic.model_name.human(count: :many) %> dos Grupos</h2>
+      </div>
+      <div class='box-content' style='background-color: rgb(245,245,245)'>
+        <ul class='messagesList'>
+          <%- current_user.groups_topics.each do |topic| %>
+            <li>
+              <%= link_to topic do %>
+              <span class='from' style='width:35%'>
+                <%= topic.circle %>
+              </span>
+              <span class='title' style='width:45%'>
+                <%= topic.subject %>
+              </span>
+              <span class='date' style='width:19%'>
+                <%= time_ago_in_words topic.updated_at %>
+              </span>
+              <% end %>
+            </li>
+          <%- end %>
+        </ul>
+      </div>
+    </div>
+  <%- end %>
+
 </div>
