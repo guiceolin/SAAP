@@ -21,6 +21,7 @@ SAAP::Application.routes.draw do
 
   namespace :messages do
     resources :topics, only: [:index, :show, :new, :create] do
+      post :approve, on: :member
       resources :messages
     end
   end

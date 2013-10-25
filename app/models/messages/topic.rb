@@ -9,7 +9,7 @@ module Messages
     validates :circle_type, :inclusion => { :in => %w(Crowd Group) }
     validates :creator_type, :inclusion => { :in => %w(User) }
 
-    before_save :check_approvation
+    before_create :check_approvation
     before_save :include_professor_when_crowd
     after_save :create_welcome_message
 

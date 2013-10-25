@@ -21,6 +21,13 @@ class Messages::TopicsController < ApplicationController
     respond_with @topic
   end
 
+  def approve
+    @topic = Messages::Topic.find(params[:id])
+    @topic.approved = true
+    @topic.save
+    redirect_to messages_topics_path
+  end
+
   private
 
   def topic_params

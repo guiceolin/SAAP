@@ -41,12 +41,18 @@
               <span class='from' style='width:35%'>
                 <%= topic.circle %>
               </span>
-              <span class='title' style='width:45%'>
+              <span class='title' style='width:40%'>
                 <%= topic.subject %>
               </span>
               <span class='date' style='width:19%'>
                 <%= time_ago_in_words topic.updated_at %>
               </span>
+              <% end %>
+              <%= link_to approve_messages_topic_path(topic), method: :post do %>
+                <i class='icon-ok'></i>
+              <% end %>
+              <%= link_to messages_topic_path(topic), method: :delete do %>
+                <i class='icon-remove'></i>
               <% end %>
             </li>
           <%- end %>
