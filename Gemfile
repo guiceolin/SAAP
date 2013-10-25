@@ -19,6 +19,9 @@ gem 'validates_timeliness'
 gem 'cancan'
 gem 'paperclip'
 
+gem 'gitolite'
+gem 'grit'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 

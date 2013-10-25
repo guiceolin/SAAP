@@ -37,6 +37,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    blankslate (3.1.2)
     builder (3.1.4)
     cancan (1.6.10)
     capistrano (3.0.0)
@@ -66,6 +67,7 @@ GEM
     debug_inspector (0.0.2)
     delorean (2.1.0)
       chronic
+    diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.0.2)
     fabrication (2.8.1)
@@ -73,6 +75,17 @@ GEM
       i18n (~> 0.5)
     foreigner (1.5.0)
       activerecord (>= 3.0.0)
+    gitolite (1.1.0)
+      gratr19 (~> 0.4.4.1)
+      grit (~> 2.5.0)
+      hashery (~> 1.5.0)
+    gratr19 (0.4.4.1)
+    grit (2.5.0)
+      diff-lcs (~> 1.1)
+      mime-types (~> 1.15)
+      posix-spawn (~> 0.3.6)
+    hashery (1.5.0)
+      blankslate
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -107,6 +120,7 @@ GEM
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.3)
+    posix-spawn (0.3.6)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -220,6 +234,8 @@ DEPENDENCIES
   fabrication
   faker
   foreigner
+  gitolite
+  grit
   jbuilder
   jquery-rails
   minitest-ansi
