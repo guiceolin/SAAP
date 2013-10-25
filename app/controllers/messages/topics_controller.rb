@@ -21,6 +21,12 @@ class Messages::TopicsController < ApplicationController
     respond_with @topic
   end
 
+  def destroy
+    @topic = Messages::Topic.find(params[:id])
+    @topic.destroy
+    redirect_to messages_topics_path
+  end
+
   def approve
     @topic = Messages::Topic.find(params[:id])
     @topic.approved = true

@@ -20,7 +20,7 @@ SAAP::Application.routes.draw do
   resources :professors, :students, :subjects, concerns: [:importable]
 
   namespace :messages do
-    resources :topics, only: [:index, :show, :new, :create] do
+    resources :topics, only: [:index, :show, :new, :create, :destroy] do
       post :approve, on: :member
       resources :messages
     end
