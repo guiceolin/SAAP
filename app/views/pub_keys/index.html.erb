@@ -5,6 +5,11 @@
         <h2><i class="icon-list"></i>
           <%= I18n.t('headers.list_resource', resource: PubKey.model_name.human(count: :many))%>
         </h2>
+        <div class='box-icon'>
+          <%= link_to new_pub_key_path do %>
+            <i class='icon-plus'></i>
+          <%- end %>
+        </div>
       </div>
       <div class='box-content'>
         <table class='table table-bordered table-condensed table-striped'>
