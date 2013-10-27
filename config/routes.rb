@@ -18,6 +18,7 @@ SAAP::Application.routes.draw do
   resources :groups, only: [:show, :create, :update, :destroy]
 
   resources :professors, :students, :subjects, concerns: [:importable]
+  resources :pub_keys
 
   namespace :messages do
     resources :topics, only: [:index, :show, :new, :create, :destroy] do
