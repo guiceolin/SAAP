@@ -35,6 +35,12 @@
               <%- end %>
             </li>
             <li>
+              <%= link_to pub_keys_path do %>
+                <i class='icon-key'></i>
+                <%= PubKey.model_name.human(count: :many) %>
+              <% end %>
+            </li>
+            <li>
               <%= link_to  session_path, method: :delete do %>
                 <i class='icon-off'></i>
                 <%= I18n.t('links.logout') %>
