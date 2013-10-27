@@ -25,7 +25,13 @@ pt-BR:
       attachment:
         one: Anexo
         other: Anexos
+      pub_key:
+        one: 'Chave Pública'
+        other: 'Chaves Públicas'
     attributes:
+      pub_key:
+        name: Nome
+        value: Chave
       group:
         name: Nome
       enunciation:
