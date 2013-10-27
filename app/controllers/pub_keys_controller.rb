@@ -1,5 +1,11 @@
 class PubKeysController < ApplicationController
   respond_to :html
+
+  def index
+    @pub_keys = current_user.pub_keys
+    respond_with @pub_keys
+  end
+
   def new
     @pub_key = PubKey.new
     respond_with(@pub_key)
@@ -9,6 +15,12 @@ class PubKeysController < ApplicationController
     @pub_key = PubKey.new(pub_keys_params)
     @pub_key.user = current_user
     @pub_key.save!
+    respond_with(@pub_key)
+  end
+
+  def destroy
+    @pub_key = PubKey.find(params[:id])
+    @pub_key.destroy!
     respond_with(@pub_key)
   end
 
