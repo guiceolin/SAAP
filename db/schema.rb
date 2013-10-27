@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022142755) do
+ActiveRecord::Schema.define(version: 20131027185728) do
 
   create_table "attachments", force: true do |t|
     t.string   "document_file_name"
@@ -111,6 +111,14 @@ ActiveRecord::Schema.define(version: 20131022142755) do
   add_index "messages_topics", ["circle_id", "circle_type"], name: "index_messages_topics_on_circle_id_and_circle_type", using: :btree
   add_index "messages_topics", ["creator_id", "creator_type"], name: "index_messages_topics_on_creator_id_and_creator_type", using: :btree
 
+  create_table "pub_keys", force: true do |t|
+    t.string  "name"
+    t.string  "value"
+    t.integer "user_id"
+  end
+
+  add_index "pub_keys", ["user_id"], name: "pub_keys_user_id_fk", using: :btree
+
   create_table "subjects", force: true do |t|
     t.string   "name"
     t.string   "code"
@@ -144,5 +152,7 @@ ActiveRecord::Schema.define(version: 20131022142755) do
 
   add_foreign_key "messages_messages", "messages_topics", name: "messages_messages_topic_id_fk", column: "topic_id"
   add_foreign_key "messages_messages", "users", name: "messages_messages_sender_id_fk", column: "sender_id"
+
+  add_foreign_key "pub_keys", "users", name: "pub_keys_user_id_fk"
 
 end
