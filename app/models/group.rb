@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
   has_many :memberships
   has_many :students, through: :memberships
   has_many :topics, class_name: 'Messages::Topic', as: :circle
+  has_one :repository
 
   delegate :subject, :crowd, :professor, to: :enunciation
 
