@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     deliveries.includes(:message => :topic).where(readed: false).group('messages_topics.id').order('messages_topics.updated_at DESC').references(:topic).map(&:message).map(&:topic)
   end
 
+  def pub_key_names
+    pub_keys.map(&:name)
+  end
+
   has_secure_password
 end
 
