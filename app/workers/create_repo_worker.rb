@@ -3,19 +3,33 @@ class CreateRepoWorker < RepoWorker
 
   def perform(group_id)
     self.group = Group.find(group_id)
-    repo = Gitolite::Config::Repo.new(generate_repo_name)
-    repo.add_permission("RW+", "", *group_key_names)
-    admin_config.add_repo(repo)
-    admin_repo.save_and_apply
+    repo = create_repo
+    add_repo_to_gitolite(repo)
+    save_repo_name
   end
 
   private
 
+  def create_repo
+    repo = Gitolite::Config::Repo.new(generate_repo_name)
+    repo.add_permission("RW+", "", *group_key_names)
+    repo
+  end
+
+  def add_repo_to_gitolite(repo)
+    admin_config.add_repo(repo)
+    admin_repo.save_and_apply
+  end
+
   def generate_repo_name
-    "#{group.enunciation_name.gsub(/\s+/, '-')}-#{group.name.gsub(/\s+/, '-')}-#{Time.now.to_i}"
+    @name ||= "#{group.enunciation_name.gsub(/\s+/, '-')}-#{group.name.gsub(/\s+/, '-')}-#{Time.now.to_i}"
   end
 
   def group_key_names
     group.students_key_names
+  end
+
+  def save_repo_name
+    group.repository = Repository.create!( name: generate_repo_name, url: generate_repo_name )
   end
 end
