@@ -124,6 +124,13 @@
           </ul>
         </li>
       <%- end %>
+      <%- if current_user.is_a? Professor %>
+        <li>
+          <%= link_to dashboard_path do %>
+            <i class='icon-file'></i><span class='hidden-sm'><%= Enunciation.model_name.human(count: :many) %></span>
+          <%- end %>
+        </li>
+      <%- end %>
     </ul>
   </div>
 </div>
