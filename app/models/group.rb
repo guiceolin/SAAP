@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   has_many :memberships
   has_many :students, through: :memberships
   has_many :topics, class_name: 'Messages::Topic', as: :circle
-  has_one :repository
+  has_one :repository, dependent: :destroy
 
   before_create :create_repo
   before_update :update_repo
