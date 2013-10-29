@@ -16,7 +16,7 @@ class UpdateRepoWorker < RepoWorker
 
   def update_permissions(repo)
     repo.clean_permissions
-    repo.add_permission('RW+', "", self.repository.group.students_key_names)
+    repo.add_permission('RW+', "", self.repository.group.students_key_names << GITOLITE['admin_key_name'])
   end
 
 end

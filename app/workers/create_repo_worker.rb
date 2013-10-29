@@ -22,7 +22,7 @@ class CreateRepoWorker < RepoWorker
   end
 
   def group_key_names
-    group.students_key_names
+    group.students_key_names << GITOLITE['admin_key_name']
   end
 
   def save_repo_name
