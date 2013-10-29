@@ -17,3 +17,4 @@
 config/database.yml
 .vagrant
 public/system/
+config/omniauth.yml
