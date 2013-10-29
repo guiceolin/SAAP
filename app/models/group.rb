@@ -5,8 +5,8 @@ class Group < ActiveRecord::Base
   has_many :topics, class_name: 'Messages::Topic', as: :circle
   has_one :repository, dependent: :destroy
 
-  before_create :create_repo
-  before_update :update_repo
+  after_create :create_repo
+  after_update :update_repo
 
   delegate :subject, :crowd, :professor, to: :enunciation
 
