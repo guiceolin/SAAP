@@ -28,6 +28,13 @@ class User < ActiveRecord::Base
     pub_keys.map(&:name)
   end
 
+  def add_oauth_credentials(credentials)
+    self.oauth_access_token = credentials['token']
+    self.oauth_refresh_token = credentials['refresh_token']
+    self.oauth_expires_in = credentials['expires_in']
+    self.save!
+  end
+
   has_secure_password
 end
 

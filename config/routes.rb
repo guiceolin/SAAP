@@ -1,5 +1,6 @@
 SAAP::Application.routes.draw do
 
+  get '/auth/:provider/callback', to: 'google_sessions#create'
   concern :importable do
     get :import, on: :collection
     post :upload, on: :collection

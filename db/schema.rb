@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027221122) do
+ActiveRecord::Schema.define(version: 20131029162223) do
 
   create_table "attachments", force: true do |t|
     t.string   "document_file_name"
@@ -145,6 +145,9 @@ ActiveRecord::Schema.define(version: 20131027221122) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "type"
+    t.string   "oauth_refresh_token"
+    t.string   "oauth_access_token"
+    t.integer  "oauth_expires_in"
   end
 
   add_foreign_key "enrollments", "crowds", name: "enrollments_crowd_id_fk"
