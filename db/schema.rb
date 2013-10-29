@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131029162223) do
+ActiveRecord::Schema.define(version: 20131029185226) do
 
   create_table "attachments", force: true do |t|
     t.string   "document_file_name"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20131029162223) do
 
   create_table "pub_keys", force: true do |t|
     t.string  "name"
-    t.string  "value"
+    t.text    "value"
     t.integer "user_id"
   end
 
