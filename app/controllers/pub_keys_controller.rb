@@ -13,7 +13,7 @@ class PubKeysController < ApplicationController
 
   def create
     @pub_key = PubKey.new(pub_keys_params)
-    @pub_key.user = current_user
+    @pub_key.student = current_user
     @pub_key.save!
     respond_with(@pub_key)
   end

@@ -1,8 +1,9 @@
 class PubKey < ActiveRecord::Base
   validate :name, :value, presence: true, uniqueness: :true
-  belongs_to :user
+  belongs_to :student, foreign_key: 'user_id'
+  has_many :repositories, through: :student
 
-  delegate :username, to: :user
+  delegate :username, to: :student
 
   after_create :add_key_to_gitosis
   after_destroy :rm_key_from_gitosis
