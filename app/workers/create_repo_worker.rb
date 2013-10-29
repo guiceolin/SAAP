@@ -25,6 +25,10 @@ class CreateRepoWorker < RepoWorker
   end
 
   def save_repo_name
-    group.repository = Repository.create!( name: generate_repo_name, url: generate_repo_name )
+    group.repository = Repository.create!( name: generate_repo_name, url: generate_repo_url )
+  end
+
+  def generate_repo_url
+    @url ||= "#{GITOLITE['user']}@#{GITOLITE['domain']}:#{generate_repo_name}.git"
   end
 end
