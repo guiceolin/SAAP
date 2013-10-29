@@ -6,6 +6,7 @@ class CreateRepoWorker < RepoWorker
     repo = create_repo
     add_repo_to_gitolite(repo)
     save_repo_name
+    CloneRepoWorker.perform_async(group.repository.url, group.repository.name)
   end
 
   private
