@@ -22,6 +22,7 @@ gem 'paperclip'
 gem 'gitolite'
 gem 'grit'
 gem 'sidekiq'
+gem 'sinatra'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
