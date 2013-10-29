@@ -19,7 +19,11 @@ class Group < ActiveRecord::Base
   end
 
   def students_key_names
-    students.map(&:pub_key_names).flatten
+    students.map { |s| { s => s.pub_keys } }.map do |hash|
+      hash.values[0].map do |pub_key|
+        "#{hash.keys[0].username}@#{pub_key.name}.pub"
+      end
+    end.flatten
   end
 
   def recipients
