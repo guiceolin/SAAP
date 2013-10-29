@@ -1,3 +1,6 @@
+<%= content_for :css do %>
+  <%= stylesheet_link_tag :zocial %>
+<% end %>
 <div class='row'>
   <div class='col-lg-12'>
     <div class='box'>
@@ -21,6 +24,15 @@
                 <td><%= User.human_attribute_name(:username) %></td>
                 <td><%= current_user.username %></td>
             </tr>
+            <tr>
+              <td>Google</td>
+              <td>
+                <%- if current_user.oauth_access_token %>
+                  <i class='icon-check'></i>
+                <%- else %>
+                  <a class='zocial google' href='/auth/google_oauth2'>Sign in with Google</a>
+                  <%- end %>
+              </td>
           </tbody>
         </table>
         <%= link_to I18n.t('links.edit'), edit_profile_path, class: 'btn btn-success'  %>
