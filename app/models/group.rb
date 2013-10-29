@@ -6,6 +6,7 @@ class Group < ActiveRecord::Base
   has_one :repository
 
   before_create :create_repo
+  before_update :update_repo
 
   delegate :subject, :crowd, :professor, to: :enunciation
 
@@ -36,5 +37,9 @@ class Group < ActiveRecord::Base
   private
   def create_repo
     CreateRepoWorker.perform_async(self.id)
+  end
+
+  def update_repo
+    UpdateRepoWorker.perform_async(repository.id)
   end
 end

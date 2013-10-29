@@ -16,11 +16,6 @@ class CreateRepoWorker < RepoWorker
     repo
   end
 
-  def add_repo_to_gitolite(repo)
-    admin_config.add_repo(repo)
-    admin_repo.save_and_apply
-  end
-
   def generate_repo_name
     @name ||= "#{group.enunciation_name.gsub(/\s+/, '-')}-#{group.name.gsub(/\s+/, '-')}-#{Time.now.to_i}"
   end

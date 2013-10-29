@@ -10,4 +10,8 @@ class RepoWorker
     @config ||= admin_repo.config
   end
 
+  def add_repo_to_gitolite(repo)
+    admin_config.add_repo(repo)
+    admin_repo.save_and_apply
+  end
 end
