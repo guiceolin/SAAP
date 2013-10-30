@@ -21,6 +21,12 @@ class GroupsController < ApplicationController
     head :ok
   end
 
+  def show
+    @group = Group.find(params[:id])
+    @group.repository.update_repo
+    respond_with(@group)
+  end
+
   private
   def group_params
     params.require(:group).permit(:enunciation_id, :name, :student_ids => [])

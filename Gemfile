@@ -20,7 +20,7 @@ gem 'cancan'
 gem 'paperclip'
 
 gem 'gitolite'
-gem 'grit'
+gem 'git'
 gem 'sidekiq'
 gem 'sinatra'
 

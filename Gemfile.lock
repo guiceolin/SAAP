@@ -80,6 +80,7 @@ GEM
       multipart-post (~> 1.2.0)
     foreigner (1.6.0)
       activerecord (>= 3.0.0)
+    git (1.2.6)
     gitolite (1.1.0)
       gratr19 (~> 0.4.4.1)
       grit (~> 2.5.0)
@@ -275,8 +276,8 @@ DEPENDENCIES
   fabrication
   faker
   foreigner
+  git
   gitolite
-  grit
   jbuilder
   jquery-rails
   minitest-ansi

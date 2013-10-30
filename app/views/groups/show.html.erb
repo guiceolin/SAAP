@@ -1,0 +1,9 @@
+<ul>
+  <%- @group.repository.tree.trees.each do |name, tree| %>
+    <li><%= name %></li>
+  <%- end %>
+  <%- @group.repository.tree.blobs.each do |name, blob| %>
+    <li><%= name %></li>
+  <%- end %>
+</ul>
+
