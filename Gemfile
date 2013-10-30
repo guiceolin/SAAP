@@ -24,6 +24,8 @@ gem 'git'
 gem 'sidekiq'
 gem 'sinatra'
 
+gem 'awesome_print'
+
 gem "omniauth-google-oauth2"
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
