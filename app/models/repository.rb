@@ -43,7 +43,7 @@ class Repository < ActiveRecord::Base
   end
 
   def repo_exists?
-    File.exists? repo_path
+    @repo_exists ||= File.exists? repo_path
   end
 
 end
