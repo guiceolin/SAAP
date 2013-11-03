@@ -1,9 +1,53 @@
-<ul>
-  <%- @group.repository.tree.trees.each do |name, tree| %>
-    <li><%= name %></li>
-  <%- end %>
-  <%- @group.repository.tree.blobs.each do |name, blob| %>
-    <li><%= name %></li>
-  <%- end %>
-</ul>
+<div class='col-lg-12 col-md-12 col-sm-12'>
+  <h1>
+    <%= @group.enunciation.name %>
+    <small>
+      <%= @group.enunciation.crowd %>
+    </small>
+  </h1>
+  <h2>
+    <%= @group.enunciation.description %>
+  </h2>
+  <h3><span><%= Enunciation.human_attribute_name(:end_at) %>: </span><%=l @group.enunciation.end_at %></h3>
+  <div class='box'>
+    <div class='box-header'>
+      <h2>
+        <%= Attachment.model_name.human(count: :many) %>
+      </h2>
+    </div>
+    <div class='box-content'>
+      <ul>
+        <%- @group.enunciation.attachments.each do |attach| %>
+          <li>
+            <%= link_to attach.document_file_name, attach.document.url %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class='box'>
+    <div class='box-header'>
+      <h2>
+        <%= Repository.model_name.human %>
+      </h2>
+    </div>
+    <div class='box-content'>
+      <%- if @group.repository.any_commits? %>
+        <ul>
+          <%- @group.repository.tree.trees.each do |name, tree| %>
+            <li><%= name %></li>
+          <%- end %>
+          <%- @group.repository.tree.blobs.each do |name, blob| %>
+            <li><%= name %></li>
+          <%- end %>
+        </ul>
+      <%- else %>
+        <%= I18n.t('git.empty_repo') %>
+        <br />
+        <%= t('git.clone_html', url: @group.repository.url) %>
+        <%= t('git.existent_html', url: @group.repository.url) %>
 
+      <% end %>
+    </div>
+  </div>
+</div>

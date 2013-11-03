@@ -28,6 +28,9 @@ pt-BR:
       pub_key:
         one: 'Chave Pública'
         other: 'Chaves Públicas'
+      repository:
+        one: Repositório
+        other: Repositórios
     attributes:
       pub_key:
         name: Nome
