@@ -5,7 +5,11 @@ class Repository < ActiveRecord::Base
 
   def update_repo
     if repo_exists?
-      repo.pull
+      begin
+        repo.pull
+      rescue Git::GitExecuteError
+        nil
+      end
     else
       false
     end
