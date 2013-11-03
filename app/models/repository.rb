@@ -27,6 +27,15 @@ class Repository < ActiveRecord::Base
     repo.gtree(sha1)
   end
 
+  # Repo is initialized without any commits or branchs, even in origin
+  def any_commits?
+    begin
+      repo_exists && tree
+    rescue Git::GitExecuteError
+      false
+    end
+  end
+
   private
 
   def repo_path
