@@ -30,7 +30,7 @@ class Repository < ActiveRecord::Base
   # Repo is initialized without any commits or branchs, even in origin
   def any_commits?
     begin
-      repo_exists && tree
+      repo_exists? && tree
     rescue Git::GitExecuteError
       false
     end
