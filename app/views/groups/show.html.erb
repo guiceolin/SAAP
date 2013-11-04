@@ -30,6 +30,11 @@
       <h2>
         <%= Messages::Topic.model_name.human(count: :many) %>
       </h2>
+      <div class='box-icon'>
+        <%= link_to new_messages_topic_path(circle_id: @group.id, circle_type: 'Group') do %>
+          <i class='icon-plus'></i>
+        <%- end %>
+      </div>
     </div>
     <div class='box-content'>
       <ul class='messagesList'>
