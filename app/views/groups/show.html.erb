@@ -1,3 +1,6 @@
+<%= content_for :footer do %>
+  <%= stylesheet_link_tag :repo %>
+<%- end %>
 <div class='col-lg-12 col-md-12 col-sm-12'>
   <h1>
     <%= @group.enunciation.name %>
@@ -64,12 +67,12 @@
     </div>
     <div class='box-content'>
       <%- if @group.repository.any_commits? %>
-        <ul>
+        <ul class='repo-list'>
           <%- @group.repository.tree.trees.each do |name, tree| %>
-            <li><%= name %></li>
+            <li><i class='icon-folder-open-alt'></i><%= name %></li>
           <%- end %>
           <%- @group.repository.tree.blobs.each do |name, blob| %>
-            <li><%= name %></li>
+            <li><i class='icon-file-alt'></i><%= name %></li>
           <%- end %>
         </ul>
       <%- else %>
