@@ -31,6 +31,9 @@ pt-BR:
       repository:
         one: Repositório
         other: Repositórios
+      repo_version:
+        one: Versão
+        other: Versões
     attributes:
       pub_key:
         name: Nome

@@ -25,6 +25,14 @@ module ApplicationHelper
     CodeRay.scan(content, convert_extension(path.split('/').last)).div(:line_numbers => :table).html_safe
   end
 
+  def repo_version_label(repo_version)
+    if repo_version.is_a? FinalRepoVersion
+      content_tag :span, I18n.t('git.tag.final_repo_version'), class: 'label label-success'
+    else
+      content_tag :span, I18n.t('git.tag.partial_repo_version'), class: 'label label-info'
+    end
+  end
+
   private
 
   def convert_extension(file_name)
