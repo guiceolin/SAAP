@@ -7,7 +7,7 @@
       <div class='box noOverflow chat alt'>
         <div class="conversation" style='width:100%'>
           <ul class='talk'>
-            <%- @topic.messages.each do |msg| %>
+            <%- @topic.readed_messages_for(current_user).each do |msg| %>
               <li>
                 <img class='avatar' alt='avatar' src="<%= gravatar_url_for(msg.sender) %>">
                 <span class='name'><%= msg.sender.name %></span>

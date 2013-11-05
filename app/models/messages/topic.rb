@@ -23,6 +23,10 @@ module Messages
       end
     end
 
+    def readed_messages_for(user)
+      messages.includes(:deliveries).where('messages_deliveries.recipient_id = ? && messages_deliveries.readed = true', user.id)
+    end
+
     private
 
     def create_welcome_message
