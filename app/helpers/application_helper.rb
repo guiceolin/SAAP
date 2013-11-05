@@ -20,4 +20,32 @@ module ApplicationHelper
     end
     out.join(' / ').html_safe
   end
+
+  def code(path, content)
+    CodeRay.scan(content, convert_extension(path.split('/').last)).div(:line_numbers => :table).html_safe
+  end
+
+  private
+
+  def convert_extension(file_name)
+    if file_name =~ /(\.rb|\.ru|\.rake|Rakefile|\.gemspec|\.rbx|Gemfile)$/
+      :ruby
+    elsif file_name =~ /\.py$/
+      :python
+    elsif file_name =~ /(\.pl|\.scala|\.c|\.cpp|\.java|\.haml|\.html|\.sass|\.scss|\.xml|\.php|\.erb)$/
+      $1[1..-1].to_sym
+    elsif file_name =~ /\.js$/
+      :javascript
+    elsif file_name =~ /\.sh$/
+      :bash
+    elsif file_name =~ /\.coffee$/
+      :coffeescript
+    elsif file_name =~ /\.yml$/
+      :yaml
+    elsif file_name =~ /\.md$/
+      :minid
+    else
+      :text
+    end
+  end
 end

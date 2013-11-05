@@ -6,11 +6,7 @@
   </div>
   <div class='box-content'>
     <%- if @group.repository.any_commits? %>
-      <pre class='rb'>
-        <code>
-<%= @object.contents %>
-        </code>
-      </pre>
+<%= code params[:path], @object.contents %>
     <%- else %>
       <%= I18n.t('git.empty_repo') %>
       <br />
