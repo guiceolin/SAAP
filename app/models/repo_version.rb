@@ -8,6 +8,8 @@ class RepoVersion < ActiveRecord::Base
   before_create :generate_name
   after_create :create_tag
 
+  delegate :name, to: :creator, prefix: true
+
   private
 
   def tag_name
