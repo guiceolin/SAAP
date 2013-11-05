@@ -42,6 +42,11 @@ class Repository < ActiveRecord::Base
     end
   end
 
+  def create_tag(name)
+    repo.add_tag(name)
+    repo.push('origin', 'master', true)
+  end
+
   private
 
   # navigate through path until lower lvl, then search for blob, and if dont find, search for folder
