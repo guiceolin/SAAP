@@ -1,0 +1,2 @@
+class PartialRepoVersion < RepoVersion
+end

@@ -1,0 +1,2 @@
+class FinalRepoVersion < RepoVersion
+end
