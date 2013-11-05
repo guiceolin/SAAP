@@ -16,7 +16,17 @@ SAAP::Application.routes.draw do
   end
   resource :dashboard, only: :show
 
-  resources :groups, only: [:show, :create, :update, :destroy]
+  resources :groups, only: [:show, :create, :update, :destroy] do
+    get "tree/:tree/" => "groups#tree", on: :member, as: :tree
+    get "tree/:tree/:path" => "groups#tree",
+      on: :member,
+      as: :tree_file,
+      constraints: {
+        id: /[a-zA-Z0-9_\-]+/,
+        tree: /[a-zA-Z0-9]+/,
+        path: /.*/
+      }
+  end
 
   resources :professors, :students, :subjects, concerns: [:importable]
   resources :pub_keys

@@ -1,0 +1,34 @@
+<%= content_for :footer do %>
+  <%= stylesheet_link_tag :repo %>
+<%- end %>
+<div class='box'>
+  <div class='box-header'>
+    <h2>
+      <%= Repository.model_name.human %> - <%= repo_breadcrumb_for(@group, params[:tree], params[:path]) %>
+    </h2>
+  </div>
+  <div class='box-content'>
+    <%- if @group.repository.any_commits? %>
+      <ul class='repo-list'>
+        <%- @object.trees.each do |name, tree| %>
+          <li>
+            <%= link_to tree_file_group_path(@group, tree: params[:tree], path: [params[:path], name].join('/')  ) do  %>
+            <i class='icon-folder-open-alt'></i><%= name %>
+            <% end %>
+          </li>
+        <%- end %>
+        <%- @object.blobs.each do |name, blob| %>
+            <%= link_to tree_file_group_path(@group, tree: params[:tree], path: [params[:path], name].join('/')  ) do  %>
+            <li><i class='icon-file-alt'></i><%= name %></li>
+          <%- end %>
+        <%- end %>
+      </ul>
+    <%- else %>
+      <%= I18n.t('git.empty_repo') %>
+      <br />
+      <%= t('git.clone_html', url: @group.repository.url) %>
+      <%= t('git.existent_html', url: @group.repository.url) %>
+
+    <% end %>
+  </div>
+</div>

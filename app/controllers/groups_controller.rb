@@ -27,6 +27,17 @@ class GroupsController < ApplicationController
     respond_with(@group)
   end
 
+  def tree
+    @group = Group.find(params[:id])
+    @path = params[:path]
+    @object = @group.repository.object(params[:tree], @path)
+    if @object.is_a? Git::Object::Blob
+      render :blob
+    else
+      render :tree
+    end
+  end
+
   private
   def group_params
     params.require(:group).permit(:enunciation_id, :name, :student_ids => [])

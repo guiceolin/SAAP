@@ -1,0 +1,22 @@
+<div class='box'>
+  <div class='box-header'>
+    <h2>
+      <%= Repository.model_name.human %> - <%= repo_breadcrumb_for(@group, params[:tree], params[:path]) %>
+    </h2>
+  </div>
+  <div class='box-content'>
+    <%- if @group.repository.any_commits? %>
+      <pre class='rb'>
+        <code>
+<%= @object.contents %>
+        </code>
+      </pre>
+    <%- else %>
+      <%= I18n.t('git.empty_repo') %>
+      <br />
+      <%= t('git.clone_html', url: @group.repository.url) %>
+      <%= t('git.existent_html', url: @group.repository.url) %>
+
+    <% end %>
+  </div>
+</div>

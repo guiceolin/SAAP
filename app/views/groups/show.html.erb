@@ -69,10 +69,18 @@
       <%- if @group.repository.any_commits? %>
         <ul class='repo-list'>
           <%- @group.repository.tree.trees.each do |name, tree| %>
-            <li><i class='icon-folder-open-alt'></i><%= name %></li>
+            <li>
+              <%= link_to tree_file_group_path(@group, tree: 'master', path: name) do %>
+                <i class='icon-folder-open-alt'></i><%= name %>
+              <%- end %>
+            </li>
           <%- end %>
           <%- @group.repository.tree.blobs.each do |name, blob| %>
-            <li><i class='icon-file-alt'></i><%= name %></li>
+            <li>
+              <%= link_to tree_file_group_path(@group, tree: 'master', path: name) do %>
+                <i class='icon-file-alt'></i><%= name %>
+              <%- end %>
+            </li>
           <%- end %>
         </ul>
       <%- else %>
