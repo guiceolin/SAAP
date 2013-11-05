@@ -21,6 +21,7 @@ gem 'paperclip'
 
 gem 'gitolite'
 gem 'git'
+gem 'coderay'
 gem 'sidekiq'
 gem 'sinatra'
 
