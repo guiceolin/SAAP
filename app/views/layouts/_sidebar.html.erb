@@ -3,17 +3,19 @@
 
   <div class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse">
     <ul class="nav nav-tabs nav-stacked main-menu">
-      <%- if can? :manage, Messages::Topic %>
+      <%- if can? :read, Messages::Topic %>
         <li>
           <%= link_to '#', class: 'dropmenu' do %>
             <i class='icon-envelope'></i><span class='hidden-sm'><%= Messages::Topic.model_name.human(count: :many) %></span>
           <%- end %>
           <ul>
-            <li>
-              <%= link_to new_messages_topic_path, class: :submenu do %>
-                <i class='icon-plus'></i><span class='hidden-sm'><%= I18n.t('links.new') %></span>
-              <% end %>
-            </li>
+            <%- if can? :create, Messages::Topic %>
+              <li>
+                <%= link_to new_messages_topic_path, class: :submenu do %>
+                  <i class='icon-plus'></i><span class='hidden-sm'><%= I18n.t('links.new') %></span>
+                <% end %>
+              </li>
+            <%- end %>
             <li>
               <%= link_to messages_topics_path, class: :submenu do %>
                 <i class='icon-list'></i><span class='hidden-sm'><%= I18n.t('links.list') %></span>
@@ -124,7 +126,7 @@
           </ul>
         </li>
       <%- end %>
-      <%- if current_user.is_a? Professor %>
+      <%- unless current_user.is_a? Admin %>
         <li>
           <%= link_to dashboard_path do %>
             <i class='icon-file'></i><span class='hidden-sm'><%= Enunciation.model_name.human(count: :many) %></span>
