@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   has_many :students, through: :memberships
   has_many :topics, class_name: 'Messages::Topic', as: :circle
   has_one :repository, dependent: :destroy
+  has_many :repo_versions
 
   after_create :create_repo
   after_update :update_repo
