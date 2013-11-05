@@ -1,5 +1,6 @@
 class RepoVersion < ActiveRecord::Base
   belongs_to :group
+  belongs_to :creator, class_name: "Student"
   has_one :repository, through: :group
 
   before_create :generate_name

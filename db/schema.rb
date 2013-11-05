@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131105163242) do
+ActiveRecord::Schema.define(version: 20131105183517) do
 
   create_table "attachments", force: true do |t|
     t.string   "document_file_name"
@@ -125,8 +125,10 @@ ActiveRecord::Schema.define(version: 20131105163242) do
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
   end
 
+  add_index "repo_versions", ["creator_id"], name: "index_repo_versions_on_creator_id", using: :btree
   add_index "repo_versions", ["group_id"], name: "index_repo_versions_on_group_id", using: :btree
 
   create_table "repositories", force: true do |t|
@@ -179,6 +181,7 @@ ActiveRecord::Schema.define(version: 20131105163242) do
   add_foreign_key "pub_keys", "users", name: "pub_keys_user_id_fk"
 
   add_foreign_key "repo_versions", "groups", name: "repo_versions_group_id_fk"
+  add_foreign_key "repo_versions", "users", name: "repo_versions_creator_id_fk", column: "creator_id"
 
   add_foreign_key "repositories", "groups", name: "repositories_group_id_fk"
 
