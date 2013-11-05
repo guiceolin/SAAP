@@ -11,6 +11,11 @@ class Ability
       can :manage, Enrollment
     elsif user.is_a? Professor
       can :manage, Messages::Topic
+    elsif user.is_a? Student
+      can :read, Messages::Topic
+      can :create, Messages::Topic
+      can :read, Messages::Message
+      can :create, Messages::Message
     end
 
     # Define abilities for the passed in user here. For example:
