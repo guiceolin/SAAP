@@ -23,7 +23,7 @@ SAAP::Application.routes.draw do
       as: :tree_file,
       constraints: {
         id: /[a-zA-Z0-9_\-]+/,
-        tree: /[a-zA-Z0-9]+/,
+        tree: /[a-zA-Z0-9_\-]+/,
         path: /.*/
       }
   end
