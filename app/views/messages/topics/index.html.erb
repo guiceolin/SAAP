@@ -20,7 +20,7 @@
               <%= topic.subject %>
             </span>
             <span class='date' style='width:19%'>
-              <%= time_ago_in_words topic.updated_at %>
+              <%= format_datetime_from_topic topic.updated_at %>
             </span>
             <% end %>
           </li>
@@ -45,7 +45,7 @@
                 <%= topic.subject %>
               </span>
               <span class='date' style='width:19%'>
-                <%= time_ago_in_words topic.updated_at %>
+                <%= format_datetime_from_topic topic.updated_at %>
               </span>
               <% end %>
               <%= link_to approve_messages_topic_path(topic), method: :post do %>
