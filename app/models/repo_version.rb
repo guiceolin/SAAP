@@ -3,6 +3,8 @@ class RepoVersion < ActiveRecord::Base
   belongs_to :creator, class_name: "Student"
   has_one :repository, through: :group
 
+  default_scope -> { order('created_at DESC') }
+
   before_create :generate_name
   after_create :create_tag
 
