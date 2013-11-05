@@ -75,6 +75,9 @@
                 <span class='date'><%=l repo_version.created_at, format: :short %></span>
                 <span class='title'><%= repo_version.name %></span>
               </div>
+              <div class='right'>
+                <span class='name'><%= repo_version.creator_name %></span>
+              </div>
             <%- end %>
           </li>
         <%- end %>
