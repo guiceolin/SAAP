@@ -27,6 +27,12 @@ class Repository < ActiveRecord::Base
     repo.gtree(sha1)
   end
 
+  def object(tree_name, path)
+    path = split_path(path)
+    tree = self.tree(tree_name)
+    path.any? ? subtree(tree, path) : tree
+  end
+
   # Repo is initialized without any commits or branchs, even in origin
   def any_commits?
     begin
