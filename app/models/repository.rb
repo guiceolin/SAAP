@@ -38,6 +38,20 @@ class Repository < ActiveRecord::Base
 
   private
 
+  # navigate through path until lower lvl, then search for blob, and if dont find, search for folder
+  def subtree(tree, path)
+    if path.size == 1
+      tree.blobs[path[0]] || tree.trees[path[0]]
+    else
+      subtree(tree.trees[path.shift], path)
+    end
+  end
+
+  def split_path(path)
+    path ||= ""
+    path.split('/')
+  end
+
   def repo_path
     "tmp/#{name}"
   end
