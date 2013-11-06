@@ -27,6 +27,7 @@ gem 'sinatra'
 
 gem 'awesome_print'
 
+gem 'google-api-client', :require => 'google/api_client'
 gem "omniauth-google-oauth2"
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
