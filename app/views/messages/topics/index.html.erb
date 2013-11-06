@@ -51,7 +51,7 @@
               <%= link_to approve_messages_topic_path(topic), method: :post do %>
                 <i class='icon-ok'></i>
               <% end %>
-              <%= link_to messages_topic_path(topic), method: :delete do %>
+              <%= link_to messages_topic_path(topic), method: :delete, confirm: "Tem Certeza?" do %>
                 <i class='icon-remove'></i>
               <% end %>
             </li>
