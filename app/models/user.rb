@@ -17,7 +17,11 @@ class User < ActiveRecord::Base
   end
 
   def unapproved_topics
-    topics.reject(&:approved)
+    topics.reject(&:approved).reject(&:reproved)
+  end
+
+  def reproved_topics
+    topics.select(&:reproved)
   end
 
   def unreaded_topics
