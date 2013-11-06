@@ -28,10 +28,10 @@
       </ul>
     </div>
   </div>
-  <%- if can? :approve, Messages::Topic %>
+  <%- if can? :read, Messages::Topic %>
     <div class='box'>
       <div class='box-header'>
-        <h2>Aprovar <%= Messages::Topic.model_name.human(count: :many) %></h2>
+        <h2><%= Messages::Topic.model_name.human(count: :many) %> Aguardando Aprovação</h2>
       </div>
       <div class='box-content' style='background-color: rgb(245,245,245)'>
         <ul class='messagesList'>
@@ -46,17 +46,45 @@
               <span class='date' style='width:19%'>
                 <%= format_datetime_from_topic topic.updated_at %>
               </span>
-              <%= link_to approve_messages_topic_path(topic), method: :post do %>
-                <i class='icon-ok'></i>
-              <% end %>
-              <%= link_to messages_topic_path(topic), method: :delete, confirm: "Tem Certeza?" do %>
-                <i class='icon-remove'></i>
-              <% end %>
+              <%- if can? :approve, Messages::Topic %>
+                <%= link_to approve_messages_topic_path(topic), method: :post do %>
+                  <i class='icon-ok'></i>
+                <% end %>
+                <%= link_to messages_topic_path(topic), method: :delete, confirm: "Tem Certeza?" do %>
+                  <i class='icon-remove'></i>
+                <% end %>
+              <%- end %>
             </li>
           <%- end %>
         </ul>
       </div>
     </div>
+    <%- end %>
+    <%- if current_user.is_a? Student %>
+    <div class='box'>
+      <div class='box-header'>
+        <h2><%= Messages::Topic.model_name.human(count: :many) %> Reprovados</h2>
+      </div>
+      <div class='box-content' style='background-color: rgb(245,245,245)'>
+        <ul class='messagesList'>
+          <%- current_user.reproved_topics.each do |topic| %>
+            <li style='cursor: default;'>
+              <span class='from' style='width:35%'>
+                <%= topic.circle %>
+              </span>
+              <span class='title' style='width:40%'>
+                <%= topic.subject %>
+              </span>
+              <span class='date' style='width:19%'>
+                <%= format_datetime_from_topic topic.updated_at %>
+              </span>
+            </li>
+          <%- end %>
+        </ul>
+      </div>
+    </div>
+    <%- end %>
+    <%- if can? :manage, Messages::Topic %>
     <div class='box'>
       <div class='box-header'>
         <h2><%= Messages::Topic.model_name.human(count: :many) %> dos Grupos</h2>
