@@ -23,7 +23,8 @@ class Messages::TopicsController < ApplicationController
 
   def destroy
     @topic = Messages::Topic.find(params[:id])
-    @topic.destroy
+    @topic.reproved = true
+    @topic.save!
     redirect_to messages_topics_path
   end
 

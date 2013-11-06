@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131105183517) do
+ActiveRecord::Schema.define(version: 20131106005104) do
 
   create_table "attachments", force: true do |t|
     t.string   "document_file_name"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20131105183517) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "include_professor", default: true
+    t.boolean  "reproved",          default: false
   end
 
   add_index "messages_topics", ["circle_id", "circle_type"], name: "index_messages_topics_on_circle_id_and_circle_type", using: :btree
