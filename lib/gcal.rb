@@ -1,5 +1,7 @@
 require 'active_support/concern'
 require 'gcal/client'
+require 'gcal/basic_object'
+require 'gcal/event'
 require 'gcal/calendar'
 require 'gcal/has_gcalendar'
 require 'gcal/event_proxy'
