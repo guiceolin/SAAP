@@ -24,7 +24,6 @@ module Gcal
         update_token
         result = execute(:api_method => service.calendars.get,
                          :parameters => {'calendarId' => calendar_id})
-        binding.pry
         Calendar.new(HashWithIndifferentAccess.new(result.data.to_hash), self)
       end
 
@@ -35,6 +34,15 @@ module Gcal
           parameters:  {},
           body_object: attributes)
         JSON.parse(result.body)["id"]
+      end
+
+      def update_calendar(calendar)
+        update_token
+        result = client.execute(:api_method => service.calendars.update,
+                                :parameters => {'calendarId' => calendar.id},
+                                :body_object => calendar.to_hash,
+                                :headers => {'Content-Type' => 'application/json'})
+        Calendar.new(HashWithIndifferentAccess.new(result.data.to_hash), self)
       end
 
 
