@@ -3,13 +3,20 @@ module Gcal
   module HasGcalendar
     extend ActiveSupport::Concern
 
-    def gcalendar
-      @gcalendar ||= Gcal::Calendar.new(name, self, self.gcalendar_id)
+    included do
+      before_save :update_gcalendar_id
     end
 
-    def update_gcalendar_id(id)
-      self.gcalendar_id = id
-      self.save!
+    def gcalendar
+      @gcalendar ||= if @gcal_settings.id
+        @gcal_settings.client.get_calendar(@gcal_settings.id)
+      else
+        Gcal::Calendar.new(@gcal_settings.to_hash, @gcal_settings.client)
+      end
+    end
+
+    def update_gcalendar_id
+      write_attribute(@gcal_settings.options[:id_column], @gcalendar.id)
     end
   end
 end
