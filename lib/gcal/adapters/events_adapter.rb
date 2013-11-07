@@ -10,7 +10,8 @@ module Gcal
           parameters: { 'calendarId' => calendar_id}
         )
         result.data.items.inject([]) do |memo, event|
-          memo << Gcal::Event.new(event.to_hash.symbolize_keys, self)
+          event_hash = event.to_hash.merge!(calendar_id: calendar_id).symbolize_keys
+          memo << Gcal::Event.new(event_hash, self)
         end
       end
     end
