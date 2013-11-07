@@ -20,6 +20,15 @@ module Gcal
       !!self.id
     end
 
+    def events
+      @event_proxy ||= EventProxy.new(id, client)
+    end
+
+    def inspect
+      inspection = attributes.map { |name, value| value && "#{name}: #{value.inspect}" }.compact * ', '
+      "#< #{self.class}:#{self.object_id} #{inspection} >"
+    end
+
     private
 
     def extract_attributes(hash)

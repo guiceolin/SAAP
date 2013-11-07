@@ -1,3 +1,4 @@
+require 'gcal/event'
 module Gcal
   module Adapters
     module EventsAdapter
@@ -9,7 +10,7 @@ module Gcal
           parameters: { 'calendarId' => calendar_id}
         )
         result.data.items.inject([]) do |memo, event|
-          memo << Event.from_google_api(event)
+          memo << Gcal::Event.new(event.to_hash.symbolize_keys, self)
         end
       end
     end
