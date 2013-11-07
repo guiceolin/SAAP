@@ -1,5 +1,9 @@
+require 'gcal/adapters/events_adapter'
+require 'gcal/adapters/calendar_adapter'
 module Gcal
   class Client < Google::APIClient
+    include Gcal::Adapters::EventsAdapter
+    include Gcal::Adapters::CalendarAdapter
     attr_accessor :access_token, :refresh_token, :expires_at
     def initialize(access_token, refresh_token, expires_at)
       super()
@@ -15,16 +19,11 @@ module Gcal
       self
     end
 
-    def insert_calendar(summary="Gcal")
-      service = self.discovered_api('calendar', 'v3')
-      result = self.execute(
-        api_method:  service.calendars.insert,
-        parameters:  {},
-        body_object: { summary: summary })
-      JSON.parse(result.body)["id"]
-    end
-
     private
+
+    def service
+      @service ||= self.discovered_api('calendar', 'v3')
+    end
 
     def set_credentials
       credentials = load_credentials
