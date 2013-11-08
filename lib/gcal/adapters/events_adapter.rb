@@ -17,13 +17,22 @@ module Gcal
 
       def insert_event(calendar_id, attributes)
         result = execute(:api_method => service.events.insert,
-                                :parameters => {'calendarId' => calendar_id},
-                                :body => JSON.dump(attributes),
-                                :headers => {'Content-Type' => 'application/json'})
+                         :parameters => {'calendarId' => calendar_id},
+                         :body => JSON.dump(attributes),
+                         :headers => {'Content-Type' => 'application/json'})
         event_hash = result.data.to_hash.merge!(calendar_id: calendar_id).symbolize_keys
         Gcal::Event.new(event_hash, self)
-
       end
+
+      def update_event(event)
+        result = execute(:api_method => service.events.patch,
+                         :parameters => {'calendarId' => event.calendar_id, 'eventId' => event.id},
+                         :body_object => event.attributes,
+                         :headers => {'Content-Type' => 'application/json'})
+        event_hash = result.data.to_hash.merge!(calendar_id: event.calendar_id).symbolize_keys
+        Gcal::Event.new(event_hash, self)
+      end
+
     end
   end
 end
