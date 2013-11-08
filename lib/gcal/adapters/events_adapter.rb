@@ -33,6 +33,12 @@ module Gcal
         Gcal::Event.new(event_hash, self)
       end
 
+      def get_event(calendar_id, event_id)
+        result = execute(:api_method => service.events.get,
+                       :parameters => {'calendarId' => calendar_id, 'eventId' => event_id})
+        event_hash = result.data.to_hash.merge!(calendar_id: calendar_id).symbolize_keys
+        Gcal::Event.new(event_hash, self)
+      end
     end
   end
 end
