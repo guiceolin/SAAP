@@ -44,7 +44,7 @@ module Gcal
     end
 
     def type
-      if @attributes.is_a?(::DateTime) || @attributes.is_a?(Time)
+      if @datetime.is_a?(::DateTime) || @datetime.is_a?(Time)
         'dateTime'
       else
         'date'
