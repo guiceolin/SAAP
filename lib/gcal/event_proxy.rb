@@ -11,11 +11,24 @@ module Gcal
       fetch_events
     end
 
+    def add(attributes_or_event)
+      attributes = extract_event_attributes(attributes_or_event)
+      self.client.insert_event(self.calendar_id, attributes)
+    end
+
     def inspect
       events.map(&:inspect).inspect
     end
 
     private
+
+    def extract_event_attributes(attributes_or_event)
+      if attributes_or_event.is_a? Gcal::Event
+        attributes_or_event.attributes
+      else
+        Gcal::Event.new(attributes_or_event).attributes
+      end
+    end
 
     def fetch_events
       self.events = if calendar_id
