@@ -8,7 +8,7 @@ module Gcal
     end
 
     def attributes
-      {  type => @datetime.rfc3339 }
+      { type => formated_value }
     end
 
     private
@@ -34,6 +34,14 @@ module Gcal
     end
 
     private
+
+    def formated_value
+      if @datetime.is_a? ::Date
+        @datetime.to_s
+      else
+        @datetime.rfc3339
+      end
+    end
 
     def type
       if @attributes.is_a?(::DateTime) || @attributes.is_a?(Time)
