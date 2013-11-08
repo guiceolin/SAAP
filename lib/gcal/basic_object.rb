@@ -15,7 +15,23 @@ module Gcal
       "#< #{self.class}:#{self.object_id} #{inspection} >"
     end
 
+    def persist
+      persisted? || insert
+    end
+
+    def persisted?
+      !!self.id
+    end
+
     private
+
+    def resource_name
+      self.class.to_s.demodulize.downcase
+    end
+
+    def insert
+      self.id = client.update_token.send("insert_#{resource_name}", attributes)
+    end
 
     def self.get_attributes
       @attributes
