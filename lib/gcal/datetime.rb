@@ -8,7 +8,7 @@ module Gcal
     end
 
     def attributes
-      { @datetime.class.to_s => @datetime.to_s(:db) }
+      {  type => @datetime.to_s(:db) }
     end
 
     private
@@ -16,7 +16,7 @@ module Gcal
     def convert_attributes
       @datetime = if @attributes.is_a? Hash
                     from_hash
-                  elsif @attributes.is_a?(Date) || @attributes.is_a?(DateTime)
+                  elsif @attributes.is_a?(Date) || @attributes.is_a?(::DateTime) || @attributes.is_a?(Time)
                     @attributes
                   else
                     raise 'Invalid Date format!'
@@ -28,6 +28,16 @@ module Gcal
         ::Date.parse(@attributes['date'])
       else
         ::DateTime.parse(@attributes['dateTime'])
+      end
+    end
+
+    private
+
+    def type
+      if @attributes.is_a?(::DateTime) || @attributes.is_a?(Time)
+        'DateTime'
+      else
+        'Date'
       end
     end
   end
