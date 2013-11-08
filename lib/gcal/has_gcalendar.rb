@@ -16,7 +16,7 @@ module Gcal
     end
 
     def update_gcalendar_id
-      write_attribute(@gcal_settings.options[:id_column], @gcalendar.id)
+      write_attribute(@gcal_settings.options[:id_column], @gcalendar.id) if @gcalendar
     end
   end
 end
