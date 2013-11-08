@@ -7,7 +7,8 @@ module Gcal
 
       def attributes
         self.class.get_attributes.inject(Hash.new) do |attributes, attr_name|
-          attributes[attr_name] = send(attr_name.underscore.to_sym)
+          value = send(attr_name.underscore.to_sym)
+          attributes[attr_name] = value if value
           attributes
         end
       end
