@@ -6,8 +6,7 @@ module Gcal
     # See https://developers.google.com/google-apps/calendar/v3/reference/events
     attributes %w(id calendar_id summary description location start end)
 
-    attr_accessor :summary, :description, :location, :start, :end
-    attr_accessor :calendar_id, :id, :client
+    attr_accessor :calendar_id, :client
 
     def extract_attributes(hash)
       hash[:start] = Gcal::DateTime.new(hash[:start])
@@ -21,5 +20,6 @@ module Gcal
       hash['end'] = hash['end'].attributes
       hash
     end
+
   end
 end
