@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106025933) do
+ActiveRecord::Schema.define(version: 20131108234209) do
 
   create_table "attachments", force: true do |t|
     t.string   "document_file_name"
@@ -150,6 +150,21 @@ ActiveRecord::Schema.define(version: 20131106025933) do
     t.datetime "updated_at"
   end
 
+  create_table "tasks", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.date     "scheduled_start_date"
+    t.date     "scheduled_end_date"
+    t.integer  "group_id"
+    t.string   "description"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["group_id"], name: "index_tasks_on_group_id", using: :btree
+  add_index "tasks", ["parent_id"], name: "index_tasks_on_parent_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "username"
@@ -186,5 +201,8 @@ ActiveRecord::Schema.define(version: 20131106025933) do
   add_foreign_key "repo_versions", "users", name: "repo_versions_creator_id_fk", column: "creator_id"
 
   add_foreign_key "repositories", "groups", name: "repositories_group_id_fk"
+
+  add_foreign_key "tasks", "groups", name: "tasks_group_id_fk"
+  add_foreign_key "tasks", "tasks", name: "tasks_parent_id_fk", column: "parent_id"
 
 end
