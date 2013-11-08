@@ -16,7 +16,13 @@ module Gcal
     end
 
     def persist
-      persisted? || insert
+      if !persisted?
+        insert
+      elsif changed?
+        update
+      else
+        false
+      end
     end
 
     def persisted?
@@ -32,6 +38,12 @@ module Gcal
     def insert
       self.id = client.update_token.send("insert_#{resource_name}", attributes)
       clear_changes
+    end
+
+    def update
+      new_event = client.update_token.send("update_#{resource_name}", self)
+      clear_changes
+      new_event
     end
 
   end
