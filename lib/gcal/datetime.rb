@@ -8,7 +8,7 @@ module Gcal
     end
 
     def attributes
-      {  type => @datetime.to_s(:db) }
+      {  type => @datetime.rfc3339 }
     end
 
     private
@@ -16,8 +16,10 @@ module Gcal
     def convert_attributes
       @datetime = if @attributes.is_a? Hash
                     from_hash
-                  elsif @attributes.is_a?(Date) || @attributes.is_a?(::DateTime) || @attributes.is_a?(Time)
+                  elsif @attributes.is_a?(Date) || @attributes.is_a?(::DateTime)
                     @attributes
+                  elsif  @attributes.is_a?(Time)
+                    @attributes.to_datetime
                   else
                     raise 'Invalid Date format!'
                   end
@@ -35,9 +37,9 @@ module Gcal
 
     def type
       if @attributes.is_a?(::DateTime) || @attributes.is_a?(Time)
-        'DateTime'
+        'dateTime'
       else
-        'Date'
+        'date'
       end
     end
   end
