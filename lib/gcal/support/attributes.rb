@@ -1,7 +1,9 @@
+require 'gcal/support/dirty'
 module Gcal
   module Support
     module Attributes
       extend ActiveSupport::Concern
+      include Gcal::Support::Dirty
 
       def attributes
         self.class.get_attributes.inject(Hash.new) do |attributes, attr_name|
@@ -14,6 +16,7 @@ module Gcal
         self.class.get_attributes.each do |attr_name|
           send("#{attr_name.underscore}=".to_sym, hash[attr_name.underscore.to_sym] )
         end
+        clear_changes
       end
 
 
@@ -38,6 +41,7 @@ module Gcal
             end
 
             define_method "#{attribute}=" do |value|
+              add_change(attribute, instance_variable_get("@#{attribute}"), value)
               instance_variable_set("@#{attribute}", value)
             end
           end

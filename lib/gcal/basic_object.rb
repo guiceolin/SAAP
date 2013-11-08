@@ -1,7 +1,9 @@
 require 'gcal/support/attributes'
+require 'gcal/support/dirty'
 module Gcal
   class BasicObject
     include Gcal::Support::Attributes
+    include Gcal::Support::Dirty
 
     def initialize(attributes={}, client=nil)
       extract_attributes(attributes)
@@ -29,6 +31,7 @@ module Gcal
 
     def insert
       self.id = client.update_token.send("insert_#{resource_name}", attributes)
+      clear_changes
     end
 
   end
