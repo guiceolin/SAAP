@@ -32,6 +32,7 @@ module Gcal
 
         def define_accessors
           @attributes.each do |attribute|
+            attribute = attribute.underscore
             define_method attribute do
               instance_variable_get("@#{attribute}")
             end
