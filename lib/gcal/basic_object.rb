@@ -1,9 +1,7 @@
+require 'gcal/support/attributes'
 module Gcal
   class BasicObject
-
-    def self.attributes(*attributes)
-      @attributes = Array.wrap(attributes.flatten)
-    end
+    include Gcal::Support::Attributes
 
     def initialize(attributes={}, client=nil)
       extract_attributes(attributes)
@@ -31,23 +29,6 @@ module Gcal
 
     def insert
       self.id = client.update_token.send("insert_#{resource_name}", attributes)
-    end
-
-    def self.get_attributes
-      @attributes
-    end
-
-    def attributes
-      self.class.get_attributes.inject(Hash.new) do |attributes, attr_name|
-        attributes[attr_name] = send(attr_name.underscore.to_sym)
-        attributes
-      end
-    end
-
-    def extract_attributes(hash)
-      self.class.get_attributes.each do |attr_name|
-        send("#{attr_name.underscore}=".to_sym, hash[attr_name.underscore.to_sym] )
-      end
     end
 
   end
