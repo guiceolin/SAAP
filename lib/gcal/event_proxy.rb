@@ -20,6 +20,10 @@ module Gcal
       events.map(&:inspect).inspect
     end
 
+    def find(id)
+      events.find { |event| event.id == id }
+    end
+
     private
 
     def extract_event_attributes(attributes_or_event)
