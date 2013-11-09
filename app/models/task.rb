@@ -6,6 +6,9 @@ class Task < ActiveRecord::Base
 
   validates :scheduled_start_date, :scheduled_end_date, :description, presence: true
 
+  after_create :create_gtasks
+
+
   def start
     if self.start_date.blank?
       self.start_date = Date.today
@@ -48,6 +51,14 @@ class Task < ActiveRecord::Base
 
   def to_s
     description
+  end
+
+  private
+
+  def create_gtasks
+    group.students.each do |student|
+      Gtask.create!(user: student, task: self)
+    end
   end
 
 end
