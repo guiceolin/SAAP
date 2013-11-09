@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+  def oauth_authenticated?
+    !!(self.oauth_access_token && self.oauth_refresh_token)
+  end
+
   has_secure_password
 end
 
