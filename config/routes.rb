@@ -17,6 +17,7 @@ SAAP::Application.routes.draw do
   resource :dashboard, only: :show
 
   resources :groups, only: [:show, :create, :update, :destroy] do
+    resources :tasks, only: [:create]
     resources :final_repo_versions, only: :create
     resources :partial_repo_versions, only: :create
     get "tree/:tree/" => "groups#tree", on: :member, as: :tree
