@@ -7,6 +7,10 @@ class Gtask < ActiveRecord::Base
 
   after_create :create_gevent
 
+  def update_gevent
+    GcalTaskUpdatedWorker.perform_async(self.id)
+  end
+
   private
 
   def create_gevent

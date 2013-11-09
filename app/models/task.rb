@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
   validates :scheduled_start_date, :scheduled_end_date, :description, presence: true
 
   after_create :create_gtasks
-
+  after_update :update_gtasks
 
   def start
     if self.start_date.blank?
@@ -59,6 +59,10 @@ class Task < ActiveRecord::Base
     group.students.each do |student|
       Gtask.create!(user: student, task: self)
     end
+  end
+
+  def update_gtasks
+    gtasks.map(&:update_gevent)
   end
 
 end
