@@ -22,14 +22,16 @@
     <div class='date'>
       <%=l task.real_start_date %> - <%=l task.real_end_date %>
       <span>
-        <%- if task.started? %>
-          <%= link_to complete_group_task_path(task.group, task), :method => :put do %>
-            <i class='icon-stop'></i>
+        <%- if current_user.is_a? Student %>
+          <%- if task.started? %>
+            <%= link_to complete_group_task_path(task.group, task), :method => :put do %>
+              <i class='icon-stop'></i>
+            <%- end %>
           <%- end %>
-        <%- end %>
-        <%- if !task.started? && !task.completed? %>
-          <%= link_to start_group_task_path(task.group, task), :method => :put do %>
-            <i class='icon-play'></i>
+          <%- if !task.started? && !task.completed? %>
+            <%= link_to start_group_task_path(task.group, task), :method => :put do %>
+              <i class='icon-play'></i>
+            <%- end %>
           <%- end %>
         <%- end %>
       </span>
