@@ -206,3 +206,35 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div class="modal fade" id="subtaskModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= simple_form_for [@group, @group.tasks.build] do |f| %>
+        <fieldset class='col-12-sm'>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel"><%= t('headers.new_resource', resource: t('tasks.subtask'))  %></h4>
+          </div>
+          <div class="modal-body">
+            <%= f.input :description %>
+            <%= f.input :scheduled_start_date, as: :string, input_html: { class: :datepicker, id: 'scheduled_start_date_subtask' } %>
+            <%= f.input :scheduled_end_date, as: :string, input_html: { class: :datepicker, id: 'scheduled_end_date_subtask' } %>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit class: 'btn btn-primary' %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </fieldset>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<%= content_for :footer do %>
+  <script>
+    $('.subtask-add').on('click', function(e){
+      $('form', '#subtaskModal').attr('action', $(e.currentTarget).data('url'))
+    });
+  </script>
+  <% end %>

@@ -18,7 +18,7 @@ SAAP::Application.routes.draw do
 
   resources :groups, only: [:show, :create, :update, :destroy] do
     resources :tasks, only: [:create] do
-      post :subtask, on: :collection
+      resources :subtasks, only: [:create]
       put :start, on: :member
       put :complete, on: :member
     end

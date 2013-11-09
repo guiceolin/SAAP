@@ -1,6 +1,11 @@
 <div class='task <%=task.status%>'>
   <div class='desc'>
-    <div class='title'><%= task.description %></div>
+    <div class='title'>
+      <%= task.description %>
+      <%= link_to "#", class: 'subtask-add', data: { toggle: "modal", target: "#subtaskModal", url: group_task_subtasks_path(task.group, task) } do %>
+        <i class='icon-plus'></i>
+    <%- end %>
+    </div>
     <div>
       <%- task.children.each do |subtask| %>
           <div class='task <%= subtask.status %>' style='border-left-width: 10px'>
