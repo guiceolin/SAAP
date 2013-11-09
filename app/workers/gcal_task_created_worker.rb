@@ -7,6 +7,7 @@ class GcalTaskCreatedWorker < GcalWorker
                                 start: gtask.real_start_date,
                                 end: gtask.real_end_date)
       gtask.gevent_id = event.id
+      gtask.save!
     end
   end
 end
