@@ -8,19 +8,13 @@ class TasksController < ApplicationController
   end
 
   def start
-    if @group.tasks.find(params[:id]).start
-      head :ok
-    else
-      head :not_found
-    end
+    @group.tasks.find(params[:id]).start
+    redirect_to @group
   end
 
   def complete
-    if @group.tasks.find(params[:id]).start
-      head :ok
-    else
-      head :not_found
-    end
+    @group.tasks.find(params[:id]).complete
+    redirect_to @group
   end
 
   private

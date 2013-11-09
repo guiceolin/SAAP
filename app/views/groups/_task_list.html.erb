@@ -19,6 +19,20 @@
     </div>
   </div>
   <div class='time' style='width: 25%'>
-      <div class='date'><%=l task.real_start_date %> - <%=l task.real_end_date %> </div>
+    <div class='date'>
+      <%=l task.real_start_date %> - <%=l task.real_end_date %>
+      <span>
+        <%- if task.started? %>
+          <%= link_to complete_group_task_path(task.group, task), :method => :put do %>
+            <i class='icon-stop'></i>
+          <%- end %>
+        <%- end %>
+        <%- if !task.started? && !task.completed? %>
+          <%= link_to start_group_task_path(task.group, task), :method => :put do %>
+            <i class='icon-play'></i>
+          <%- end %>
+        <%- end %>
+      </span>
+    </div>
   </div>
 </div>
