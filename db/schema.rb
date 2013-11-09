@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108234209) do
+ActiveRecord::Schema.define(version: 20131109044921) do
 
   create_table "attachments", force: true do |t|
     t.string   "document_file_name"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 20131108234209) do
   end
 
   add_index "groups", ["enunciation_id"], name: "index_groups_on_enunciation_id", using: :btree
+
+  create_table "gtasks", force: true do |t|
+    t.integer "user_id"
+    t.integer "task_id"
+    t.string  "gevent_id"
+  end
+
+  add_index "gtasks", ["task_id"], name: "index_gtasks_on_task_id", using: :btree
+  add_index "gtasks", ["user_id"], name: "index_gtasks_on_user_id", using: :btree
 
   create_table "memberships", force: true do |t|
     t.integer "student_id"
@@ -185,6 +194,9 @@ ActiveRecord::Schema.define(version: 20131108234209) do
   add_foreign_key "enunciations", "crowds", name: "enunciations_crowd_id_fk"
 
   add_foreign_key "groups", "enunciations", name: "groups_enunciation_id_fk"
+
+  add_foreign_key "gtasks", "tasks", name: "gtasks_task_id_fk"
+  add_foreign_key "gtasks", "users", name: "gtasks_user_id_fk"
 
   add_foreign_key "memberships", "groups", name: "memberships_group_id_fk", dependent: :delete
   add_foreign_key "memberships", "users", name: "memberships_student_id_fk", column: "student_id", dependent: :delete
