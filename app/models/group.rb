@@ -36,6 +36,22 @@ class Group < ActiveRecord::Base
     "#{crowd} - #{enunciation} - #{name}"
   end
 
+  def parent_tasks
+    @parent_tasks ||= tasks.where(parent_id: nil).group_by(&:status)
+  end
+
+  def not_started_tasks
+    parent_tasks[:high] || []
+  end
+
+  def started_tasks
+    parent_tasks[:medium] || []
+  end
+
+  def complete_tasks
+    parent_tasks[:low] || []
+  end
+
   private
   def create_repo
     CreateRepoWorker.perform_async(self.id)
