@@ -2,5 +2,9 @@ pt-BR:
   activity_log:
     login: Inicio
     logout: Fim
+    pub_key_creation: Adicionada
+    pub_key_destruction: Removida
     session: Sessão
     sessions: Sessões
+    pub_key: Chave Pública
+    pub_keys: Chaves Públicas

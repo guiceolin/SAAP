@@ -137,6 +137,11 @@
                 <i class='icon-user'></i><span class='hidden-sm'><%= I18n.t('activity_log.sessions') %></span>
               <% end %>
             </li>
+            <li>
+              <%= link_to activity_log_pub_keys_path, class: :submenu do %>
+                <i class='icon-key'></i><span class='hidden-sm'><%= I18n.t('activity_log.pub_keys') %></span>
+              <% end %>
+            </li>
           </ul>
         </li>
       <%- end %>

@@ -1,3 +1,4 @@
+require 'pub_key'
 class ActivityLog < ActiveRecord::Base
 
   serialize :serialized_object

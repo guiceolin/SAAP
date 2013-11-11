@@ -37,6 +37,7 @@ SAAP::Application.routes.draw do
 
   namespace :activity_log do
     resources :sessions, only: :index
+    resources :pub_keys, only: :index
   end
 
   resources :professors, :students, :subjects, concerns: [:importable]
