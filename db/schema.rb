@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131109044921) do
+ActiveRecord::Schema.define(version: 20131111005857) do
+
+  create_table "activity_logs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.string   "action"
+    t.string   "serialized_object"
+    t.datetime "occurred_at"
+  end
+
+  add_index "activity_logs", ["item_id", "item_type"], name: "index_activity_logs_on_item_id_and_item_type", using: :btree
+  add_index "activity_logs", ["user_id"], name: "index_activity_logs_on_user_id", using: :btree
 
   create_table "attachments", force: true do |t|
     t.string   "document_file_name"
@@ -187,6 +199,8 @@ ActiveRecord::Schema.define(version: 20131109044921) do
     t.integer  "oauth_expires_in"
     t.string   "gcalendar_id"
   end
+
+  add_foreign_key "activity_logs", "users", name: "activity_logs_user_id_fk"
 
   add_foreign_key "enrollments", "crowds", name: "enrollments_crowd_id_fk"
   add_foreign_key "enrollments", "users", name: "enrollments_student_id_fk", column: "student_id"
