@@ -9,6 +9,7 @@ class Ability
       can :manage, Student
       can :manage, Professor
       can :manage, Enrollment
+      can :manage, ActivityLog
     elsif user.is_a? Professor
       can :manage, Messages::Topic
     elsif user.is_a? Student

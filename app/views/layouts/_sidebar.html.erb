@@ -126,6 +126,21 @@
           </ul>
         </li>
       <%- end %>
+      <%- if can?(:manage, ActivityLog) %>
+        <li>
+          <%= link_to '#', class: 'dropmenu' do %>
+            <i class='icon-book'></i><span class='hidden-sm'><%= ActivityLog.model_name.human(count: :many) %></span>
+          <% end %>
+          <ul>
+            <li>
+              <%= link_to activity_log_sessions_path, class: :submenu do %>
+                <i class='icon-user'></i><span class='hidden-sm'><%= I18n.t('activity_log.sessions') %></span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <%- end %>
+
       <%- unless current_user.is_a? Admin %>
         <li>
           <%= link_to dashboard_path do %>
