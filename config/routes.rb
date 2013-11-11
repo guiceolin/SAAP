@@ -35,6 +35,10 @@ SAAP::Application.routes.draw do
       }
   end
 
+  namespace :activity_log do
+    resources :sessions
+  end
+
   resources :professors, :students, :subjects, concerns: [:importable]
   resources :pub_keys
 

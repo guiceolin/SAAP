@@ -1,0 +1,78 @@
+<div class='row'>
+  <div class='col-lg-12'>
+    <div class='box'>
+      <div class='box-header'>
+        <h2><i class="icon-search"></i>
+          <%= I18n.t('headers.filter_resource', resource: ActivityLog.model_name.human(count: :many))%>
+        </h2>
+        <div class='box-icon'>
+          <a href='#' class='btn-minimize'>
+            <i class='icon-chevron-up'></i>
+          </a>
+        </div>
+      </div>
+      <div class='box-content'>
+        <%= search_form_for @q, url: activity_log_sessions_path, class: 'form-horizontal' do |f|  %>
+          <fieldset class='col-sm-12'>
+            <div class='form-group col-sm-4'>
+              <%= f.label :action_eq, ActivityLog.human_attribute_name(:action), class: 'control-label' %>
+              <div class='controls row'>
+                <div class='col-lg-11'>
+                  <%= f.select :action_eq, [[t('activity_log.login'), 'login'], [t('activity_log.logout'), 'logout']], { include_blank: true }, class:'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class='form-group col-sm-4'>
+              <%= f.label :user_username_eq, ActivityLog.human_attribute_name(:user), class: 'control-label' %>
+              <div class='controls row'>
+                <div class='col-lg-11'>
+                  <%= f.text_field :user_username_eq, class:'form-control' %>
+                </div>
+              </div>
+            </div>
+          </fieldset >
+          <fieldset class='col-sm-12'>
+            <div class="form-actions">
+              <%= f.submit I18n.t('links.filter'), class: 'btn btn-primary' %>
+              <%= link_to I18n.t('links.clear'), activity_log_sessions_path, class: 'btn btn-default' %>
+            </div>
+          </fieldset>
+        <%- end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class='row'>
+  <div class='col-lg-12'>
+    <div class='box'>
+      <div class='box-header'>
+        <h2><i class="icon-list"></i>
+          <%= I18n.t('headers.list_resource', resource: ActivityLog.model_name.human(count: :many))%>
+        </h2>
+      </div>
+      <div class='box-content'>
+        <table class='table table-bordered table-condensed table-striped'>
+          <thead>
+            <tr>
+              <th><%= User.human_attribute_name(:username) %></th>
+              <th><%= ActivityLog.human_attribute_name(:action) %></th>
+              <th><%= ActivityLog.human_attribute_name(:occurred_at) %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%- @activities.each do |activity|  %>
+              <tr>
+                <td><%= activity.username %></td>
+                <td><%= session_activity_action(activity.action) %></td>
+                <td><%=l activity.occurred_at %></td>
+              </tr>
+            <%- end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

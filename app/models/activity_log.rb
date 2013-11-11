@@ -9,7 +9,10 @@ class ActivityLog < ActiveRecord::Base
     login
     logout
   )
+
   belongs_to :user
   belongs_to :item, polymorphic: true
   validates :action, inclusion: { in: ACTIONS}
+
+  delegate :username, to: :user
 end
