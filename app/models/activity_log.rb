@@ -4,6 +4,8 @@ class ActivityLog < ActiveRecord::Base
 
   ACTIONS = %w(
     enunciation_end_change
+    pub_key_creation
+    pub_key_destruction
   )
   belongs_to :user
   belongs_to :item, polymorphic: true

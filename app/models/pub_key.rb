@@ -5,8 +5,8 @@ class PubKey < ActiveRecord::Base
 
   delegate :username, to: :student
 
-  after_create :add_key_to_gitosis, :update_repos
-  after_destroy :rm_key_from_gitosis, :update_repos
+  after_create :add_key_to_gitosis, :update_repos, :log_creation
+  after_destroy :rm_key_from_gitosis, :update_repos, :log_destruction
 
   private
 
@@ -22,5 +22,21 @@ class PubKey < ActiveRecord::Base
 
   def add_key_to_gitosis
     AddKeyWorker.perform_async(value, username, name)
+  end
+
+  def log_creation
+    ActivityLog.create!(user: student,
+                       item: self,
+                       action: 'pub_key_creation',
+                       serialized_object: self,
+                       occurred_at: Time.current)
+  end
+
+  def log_destruction
+    ActivityLog.create!(user: student,
+                       item: self,
+                       action: 'pub_key_destruction',
+                       serialized_object: self,
+                       occurred_at: Time.current)
   end
 end
