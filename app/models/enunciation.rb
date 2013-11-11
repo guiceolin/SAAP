@@ -1,6 +1,8 @@
 class Enunciation < ActiveRecord::Base
   belongs_to :crowd
 
+  attr_accessor :current_user
+
   validates :end_at, timeliness: { on_or_after: lambda { Date.today } }
   validates :name, :description, presence: true
 
@@ -12,6 +14,8 @@ class Enunciation < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, :allow_destroy => true, reject_if: proc { |attributes| attributes['document'].blank? }
 
   delegate :professor, :subject, to: :crowd
+
+  after_save :log_activity
 
   def ungrouped_students
     students - grouped_students
@@ -40,5 +44,18 @@ class Enunciation < ActiveRecord::Base
       Attachment.create!(document: a.document, attachable: self)
     end
   end
+
+  private
+
+  def log_activity
+    if end_at_changed?
+      ActivityLog.create!(item: self,
+                          user: current_user,
+                          action: 'enunciation_end_change',
+                          serialized_object: changes[:end_at],
+                          occurred_at: Time.current )
+    end
+  end
+
 
 end

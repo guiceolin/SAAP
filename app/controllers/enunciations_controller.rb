@@ -24,6 +24,7 @@ class EnunciationsController < ApplicationController
   def update
     @enunciation = Enunciation.find(params[:id])
     @enunciation.crowd = Crowd.find(params[:crowd_id])
+    @enunciation.current_user = current_user
     if @enunciation.update_attributes(enunciation_params)
       redirect_to dashboard_path
     else
