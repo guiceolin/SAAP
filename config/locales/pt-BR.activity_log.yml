@@ -4,6 +4,8 @@ pt-BR:
     logout: Fim
     pub_key_creation: Adicionada
     pub_key_destruction: Removida
+    change: Mudança
+    enunciation: Enunciados
     session: Sessão
     sessions: Sessões
     pub_key: Chave Pública
