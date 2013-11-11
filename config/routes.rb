@@ -36,7 +36,7 @@ SAAP::Application.routes.draw do
   end
 
   namespace :activity_log do
-    resources :sessions
+    resources :sessions, only: :index
   end
 
   resources :professors, :students, :subjects, concerns: [:importable]

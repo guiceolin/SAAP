@@ -1,0 +1,6 @@
+pt-BR:
+  activity_log:
+    login: Inicio
+    logout: Fim
+    session: Sessão
+    sessions: Sessões

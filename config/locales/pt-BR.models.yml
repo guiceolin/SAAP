@@ -1,6 +1,9 @@
 pt-BR:
   activerecord:
     models:
+      activity_log:
+        one: Atividade
+        other: Atividades
       enunciation:
         one: Enunciado
         other: Enunciados
@@ -35,6 +38,10 @@ pt-BR:
         one: Versão
         other: Versões
     attributes:
+      activity_log:
+        action: Ação
+        user: Usuário
+        occurred_at: Occorido em
       pub_key:
         name: Nome
         value: Chave
