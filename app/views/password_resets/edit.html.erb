@@ -1,0 +1,13 @@
+<h2><%= raw t('login.new_password_message') %></h2>
+<%= form_tag '/password_reset', class: 'form-horizontal' do %>
+  <fieldset>
+
+    <input class="input-large col-xs-12" name="password" id="password" type="password" placeholder="<%= I18n.t('login.password') %>"/>
+
+    <input class="input-large col-xs-12" name="password_confirmation" id="password_confirmation" type="password" placeholder="<%= I18n.t('login.password_confirmation') %>"/>
+
+    <div class="clearfix"></div>
+
+    <button type="submit" class="btn btn-primary col-xs-12"><%= I18n.t('links.save') %></butto\n>
+  </fieldset>
+<% end %>

@@ -2,4 +2,9 @@ pt-BR:
   login:
     username: Nome de usuário
     password: Senha
+    password_confirmation: Confirmação
+    email: Email
+    new_password_message: Entre com a nova senha
+    reset_password_message: Enviaremos instruções ao seu email
     login_message: Entre com suas credenciais
+

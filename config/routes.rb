@@ -7,6 +7,7 @@ SAAP::Application.routes.draw do
   end
 
   resource :session, only: [:new, :create, :destroy]
+  resource :password_reset, only: [:new, :create, :edit, :update]
   resource :profile, only: [:show, :edit, :update]
 
   resources :crowds, concerns: [:importable] do

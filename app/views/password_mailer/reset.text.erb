@@ -1,0 +1,13 @@
+Prezado(a) <%= @user.name %>,
+
+Foi solicitada a recuperação da sua senha de acesso,
+no SAAP - Sistema de Acompanhamento Acadêmico de Projetos.
+
+Para proseguir, clique no link abaixo:
+<%= edit_password_reset_url(token: @token) %>
+
+Caso nao tenha solicitado a recuperação de senha,
+apenas ignore essa mensagem.
+
+--
+SAAP - Sistema de Acompanhamento Academico de Projetos
