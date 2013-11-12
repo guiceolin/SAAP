@@ -9,12 +9,13 @@ class PasswordResetsController < ApplicationController
   def create
     user = User.where(email: params[:email]).first
     if user.blank?
-      redirect_to root_path
+      flash.now[:danger] = t('flash.messages.password_reset.mail_not_found')
+      render :new
     else
       user.password_reset_token = SecureRandom.hex(64)
       user.save!
       PasswordMailer.reset(user).deliver
-      flash.now[:reset] = 'Instruções foram enviadas para seu email'
+      flash[:success] = t('flash.messages.password_reset.mail_sent')
       redirect_to new_session_path
     end
   end
@@ -24,12 +25,14 @@ class PasswordResetsController < ApplicationController
   def update
     user = User.where(password_reset_token: params[:password_reset_token]).first
     if user.blank?
+      flash[:danger] = t('flash.messages.password_reset.invalid_token')
       redirect_to new_session_path
     else
       user.password = params[:password]
       user.password_confirmation = params[:password_confirmation]
       user.password_reset_token = nil
       user.save!
+      flash[:success] = t('flash.messages.password_reset.password_changed')
       redirect_to new_session_path
     end
   end
@@ -37,7 +40,10 @@ class PasswordResetsController < ApplicationController
   private
 
   def verify_token_presence
-    redirect_to new_session_path unless params[:token]
+    unless params[:token]
+      flash[:danger] = t('flash.messages.password_reset.invalid_token')
+      redirect_to new_session_path
+    end
   end
 
 end

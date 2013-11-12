@@ -3,6 +3,11 @@ pt-BR:
     messages:
       login:
         failed: Usuário ou senha invalidos!
+      password_reset:
+        mail_sent: Um e-mail com instruções foi enviado para você!
+        mail_not_found: Email não encontrado!
+        password_changed: Senha alterada com sucesso!
+        invalid_token: Token Inválido
 
     header:
       success: Muito bem!
