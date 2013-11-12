@@ -178,6 +178,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    paranoia (2.0.1)
+      activerecord (~> 4.0)
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.3)
@@ -342,6 +344,7 @@ DEPENDENCIES
   nested_form
   omniauth-google-oauth2
   paperclip
+  paranoia
   pry-rails
   quiet_assets
   rails (~> 4.0.0)

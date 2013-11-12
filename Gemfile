@@ -25,6 +25,8 @@ gem 'coderay'
 gem 'sidekiq'
 gem 'sinatra'
 
+gem 'paranoia'
+
 gem 'awesome_print'
 
 gem 'google-api-client', :require => 'google/api_client'
