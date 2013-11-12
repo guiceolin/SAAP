@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111005857) do
+ActiveRecord::Schema.define(version: 20131111232017) do
 
   create_table "activity_logs", force: true do |t|
     t.integer  "user_id"
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 20131111005857) do
     t.string   "oauth_access_token"
     t.integer  "oauth_expires_in"
     t.string   "gcalendar_id"
+    t.string   "password_reset_token"
   end
 
   add_foreign_key "activity_logs", "users", name: "activity_logs_user_id_fk"
