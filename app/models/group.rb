@@ -52,6 +52,10 @@ class Group < ActiveRecord::Base
     parent_tasks[:low] || []
   end
 
+  def oldfy_versions
+    repo_versions.where(type: 'FinalRepoVersion').map(&:oldfy)
+  end
+
   private
   def create_repo
     CreateRepoWorker.perform_async(self.id)

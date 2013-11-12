@@ -1,0 +1,2 @@
+class OldRepoVersion < RepoVersion
+end
