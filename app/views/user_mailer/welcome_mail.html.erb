@@ -1,0 +1,8 @@
+<p>Olá, <%= @user.name %><br />
+Bem vindo ao SAAP - Sistema de Acompanhamento Academico de projetos</p>
+<p>Seu nome de usuário é:</p>
+<p><%= @user.username %></p>
+<p>Para acessar o sistema, defina sua senha em:</p>
+<p><%= link_to 'link', edit_password_reset_url(token: @user.password_reset_token)  %>
+<br />
+<p>Qualquer dúvida, procure a secretaria acadêmica</p>

@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :username, :email, presence: true, uniqueness: true
 
+  after_create :send_welcome_mail
+
   def topics
     circles.map(&:topics).flatten.uniq.sort_by(&:updated_at).reverse!
   end
@@ -53,5 +55,12 @@ class User < ActiveRecord::Base
   end
 
   has_secure_password
+
+  private
+
+  def send_welcome_mail
+    generate_password_reset_token
+    UserMailer.welcome_mail(self).deliver
+  end
 end
 
