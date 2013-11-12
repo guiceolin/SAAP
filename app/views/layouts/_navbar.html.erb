@@ -41,7 +41,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to  session_path, method: :delete do %>
+            <%= link_to  session_path, method: :delete, data: { confirm: t('links.confirmation') } do %>
                 <i class='icon-off'></i>
                 <%= I18n.t('links.logout') %>
               <% end %>

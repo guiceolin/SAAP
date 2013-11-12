@@ -50,7 +50,7 @@
                 <%= link_to "#", class: 'group-edit-link' do %>
                   <i class='icon-pencil'></i>
                 <% end %>
-                <%= link_to group, method: :delete, class: 'group-delete-link' do %>
+                <%= link_to group, method: :delete, class: 'group-delete-link', data: { confirm: t('links.confirmation') } do %>
                   <i class='icon-remove'></i>
                 <% end %>
               </span>

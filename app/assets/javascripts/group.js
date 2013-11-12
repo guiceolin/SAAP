@@ -34,14 +34,16 @@
   });
 
   $('a.group-delete-link').on('click', function(){
-    $link = getDiv(this);
-    $.ajax({
-      type: 'DELETE',
-      url: this.href
-    }).success(function(data){
-      $link.closest('li').remove();
-      window.location.reload();
-    });
+    if (confirm($(this).data('confirm'))){
+      $link = getDiv(this);
+      $.ajax({
+        type: 'DELETE',
+        url: this.href
+      }).success(function(data){
+        $link.closest('li').remove();
+        window.location.reload();
+      });
+    }
     return false;
   });
 })();
