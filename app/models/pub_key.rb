@@ -5,10 +5,18 @@ class PubKey < ActiveRecord::Base
 
   delegate :username, to: :student
 
-  after_create :add_key_to_gitosis, :update_repos, :log_creation
-  after_destroy :rm_key_from_gitosis, :update_repos, :log_destruction
+  after_create :add_key_to_gitosis, :update_repos, :log_creation, :send_added_mail
+  after_destroy :rm_key_from_gitosis, :update_repos, :log_destruction, :send_removed_mail
 
   private
+
+  def send_added_mail
+    PubKeyMailer.new_key_added_mail(student, self).deliver
+  end
+
+  def send_removed_mail
+    PubKeyMailer.key_removed_mail(student, self).deliver
+  end
 
   def update_repos
     repositories.map(&:id).each do |id|
