@@ -7,4 +7,6 @@ pt-BR:
     new_password_message: Entre com a nova senha
     reset_password_message: Enviaremos instruções ao seu email
     login_message: Entre com suas credenciais
+    forgot_password_message_html: "Sem problemas! <a href='%{url}'>Recupere-a aqui!</a>"
+    forgot_password: Esqueceu sua senha?
 

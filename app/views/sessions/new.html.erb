@@ -15,3 +15,9 @@
     <button type="submit" class="btn btn-primary col-xs-12"><%= I18n.t('links.login') %></button>
   </fieldset>
 <% end %>
+<hr>
+<h3><%= t('login.forgot_password') %></h3>
+<p>
+  <%= t('login.forgot_password_message_html', url: new_password_reset_path) %>
+</p>
+
