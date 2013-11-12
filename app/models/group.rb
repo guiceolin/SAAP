@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
   has_many :topics, class_name: 'Messages::Topic', as: :circle
   has_many :tasks
   has_one :repository, dependent: :destroy
-  has_many :repo_versions
+  has_many :repo_versions, dependent: :destroy
 
   after_create :create_repo
   after_update :update_repo
