@@ -1,5 +1,5 @@
 <h2><%= raw t('login.new_password_message') %></h2>
-<%= form_tag '/password_reset', class: 'form-horizontal' do %>
+<%= form_tag '/password_reset', class: 'form-horizontal', method: :patch do %>
   <fieldset>
 
     <input class="input-large col-xs-12" name="password" id="password" type="password" placeholder="<%= I18n.t('login.password') %>"/>

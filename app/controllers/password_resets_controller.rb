@@ -21,7 +21,7 @@ class PasswordResetsController < ApplicationController
 
   def edit; end
 
-  def create
+  def update
     user = User.where(password_reset_token: params[:password_reset_token]).first
     if user.blank?
       redirect_to new_session_path
