@@ -83,7 +83,7 @@ GEM
     eventmachine (1.0.3)
     execjs (2.0.2)
     extlib (0.9.16)
-    fabrication (2.9.2)
+    fabrication (2.9.3)
     faker (1.2.0)
       i18n (~> 0.5)
     faraday (0.8.8)
