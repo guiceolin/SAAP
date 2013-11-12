@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
     !!(self.oauth_access_token && self.oauth_refresh_token)
   end
 
+  def generate_password_reset_token
+    self.password_reset_token = SecureRandom.hex(64)
+  end
+
   has_secure_password
 end
 

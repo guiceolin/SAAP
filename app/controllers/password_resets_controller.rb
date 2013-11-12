@@ -12,7 +12,7 @@ class PasswordResetsController < ApplicationController
       flash.now[:danger] = t('flash.messages.password_reset.mail_not_found')
       render :new
     else
-      user.password_reset_token = SecureRandom.hex(64)
+      user.generate_password_reset_token
       user.save!
       PasswordMailer.reset(user).deliver
       flash[:success] = t('flash.messages.password_reset.mail_sent')
