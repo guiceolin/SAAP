@@ -1,0 +1,7 @@
+pt-BR:
+  tasks:
+    subtask: Subtarefa
+    status:
+      not_started: Não iniciadas
+      started: Iniciadas
+      complete: Finalizadas

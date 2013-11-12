@@ -37,6 +37,9 @@ pt-BR:
       repo_version:
         one: Versão
         other: Versões
+      task:
+        one: Tarefa
+        other: Tarefas
     attributes:
       activity_log:
         action: Ação
@@ -73,3 +76,7 @@ pt-BR:
         subject: Assunto
         circle: Círculo
         include_professor: Incluir Professor
+      task:
+        description: Descrição
+        scheduled_start_date: Data prevista de início
+        scheduled_end_date: Data prevista de fim
