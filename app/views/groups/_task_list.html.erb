@@ -17,15 +17,15 @@
             <div class='time' style='width: 25%'>
               <div>
                 <%= l subtask.real_start_date %> - <%= l subtask.real_end_date %>
-                <span>
+                <span style='margin-left: 5px'>
                   <%- if current_user.is_a? Student %>
                     <%- if subtask.started? %>
-                      <%= link_to complete_group_task_path(subtask.group, subtask), :method => :put do %>
-                        <i class='icon-stop'></i>
+                      <%= link_to complete_group_task_path(subtask.group, subtask), title: t('tasks.tooltip.complete'), :method => :put, data: { rel: :tooltip } do %>
+                        <i class='icon-check'></i>
                       <%- end %>
                     <%- end %>
                     <%- if !subtask.started? && !subtask.completed? %>
-                      <%= link_to start_group_task_path(subtask.group, subtask), :method => :put do %>
+                      <%= link_to start_group_task_path(subtask.group, subtask), title: t('tasks.tooltip.start'), data: { rel: :tooltip}, :method => :put do %>
                         <i class='icon-play'></i>
                       <%- end %>
                     <%- end %>
@@ -41,15 +41,15 @@
   <div class='time' style='width: 25%'>
     <div class='date'>
       <%=l task.real_start_date %> - <%=l task.real_end_date %>
-      <span>
+      <span style='margin-left: 5px'>
         <%- if current_user.is_a? Student %>
           <%- if task.started? %>
-            <%= link_to complete_group_task_path(task.group, task), :method => :put do %>
-              <i class='icon-stop'></i>
+            <%= link_to complete_group_task_path(task.group, task), title: t('tasks.tooltip.complete'), data: { rel: :tooltip }, :method => :put do %>
+              <i class='icon-check'></i>
             <%- end %>
           <%- end %>
           <%- if !task.started? && !task.completed? %>
-            <%= link_to start_group_task_path(task.group, task), :method => :put do %>
+            <%= link_to start_group_task_path(task.group, task), title: t('tasks.tooltip.start'), data: { rel: :tooltip }, :method => :put do %>
               <i class='icon-play'></i>
             <%- end %>
           <%- end %>

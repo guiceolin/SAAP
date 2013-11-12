@@ -1,5 +1,8 @@
 pt-BR:
   tasks:
+    tooltip:
+      start: Iniciar
+      complete: Finalizar
     subtask: Subtarefa
     status:
       not_started: Não iniciadas
