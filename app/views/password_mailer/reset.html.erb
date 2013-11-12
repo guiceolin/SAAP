@@ -1,0 +1,9 @@
+<p>Prezado(a) <%= @user.name %>,</p>
+<p>Foi solicitada a recuperação da sua senha de acesso,<br />
+no <%= link_to 'SAAP - Sistema de Acompanhamento Acadêmico de Projetos', root_path %>.</p>
+<p>Para proseguir, clique no link abaixo:<br />
+<%= link_to 'link', edit_password_reset_url(token: @token) %></p>
+<p>Caso nao tenha solicitado a recuperação de senha,<br />
+apenas ignore essa mensagem.</p>
+<p>--<br />
+<%= link_to 'SAAP - Sistema de Acompanhamento Acadêmico de Projetos', root_path %></p>
