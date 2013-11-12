@@ -1,4 +1,9 @@
 pt-BR:
   flash:
-    login:
-      failed: Usuário ou senha invalidos!
+    messages:
+      login:
+        failed: Usuário ou senha invalidos!
+
+    header:
+      success: Muito bem!
+      danger: Ops!

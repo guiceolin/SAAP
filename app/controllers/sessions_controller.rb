@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       sign_in user
     else
-      flash.now[:login] = I18n.t('flash.login.failed')
+      flash.now[:danger] = I18n.t('flash.messages.login.failed')
       render :new
     end
   end
