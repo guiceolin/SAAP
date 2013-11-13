@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111232017) do
+ActiveRecord::Schema.define(version: 20131112234758) do
 
   create_table "activity_logs", force: true do |t|
     t.integer  "user_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.datetime "document_updated_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.datetime "deleted_at"
   end
 
   create_table "crowds", force: true do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.integer  "subject_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "crowds", ["professor_id"], name: "index_crowds_on_professor_id", using: :btree
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.integer  "crowd_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "enrollments", ["crowd_id"], name: "enrollments_crowd_id_fk", using: :btree
@@ -65,6 +68,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.integer  "crowd_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "enunciations", ["crowd_id"], name: "index_enunciations_on_crowd_id", using: :btree
@@ -74,22 +78,25 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.integer  "enunciation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "groups", ["enunciation_id"], name: "index_groups_on_enunciation_id", using: :btree
 
   create_table "gtasks", force: true do |t|
-    t.integer "user_id"
-    t.integer "task_id"
-    t.string  "gevent_id"
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.string   "gevent_id"
+    t.datetime "deleted_at"
   end
 
   add_index "gtasks", ["task_id"], name: "index_gtasks_on_task_id", using: :btree
   add_index "gtasks", ["user_id"], name: "index_gtasks_on_user_id", using: :btree
 
   create_table "memberships", force: true do |t|
-    t.integer "student_id"
-    t.integer "group_id"
+    t.integer  "student_id"
+    t.integer  "group_id"
+    t.datetime "deleted_at"
   end
 
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
@@ -101,6 +108,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.boolean  "readed",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "messages_deliveries", ["message_id"], name: "index_messages_deliveries_on_message_id", using: :btree
@@ -112,6 +120,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "messages_messages", ["sender_id"], name: "index_messages_messages_on_sender_id", using: :btree
@@ -128,6 +137,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.datetime "updated_at"
     t.boolean  "include_professor", default: true
     t.boolean  "reproved",          default: false
+    t.datetime "deleted_at"
   end
 
   add_index "messages_topics", ["circle_id", "circle_type"], name: "index_messages_topics_on_circle_id_and_circle_type", using: :btree
@@ -148,6 +158,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
+    t.datetime "deleted_at"
   end
 
   add_index "repo_versions", ["creator_id"], name: "index_repo_versions_on_creator_id", using: :btree
@@ -159,6 +170,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "repositories", ["group_id"], name: "repositories_group_id_fk", using: :btree
@@ -181,6 +193,7 @@ ActiveRecord::Schema.define(version: 20131111232017) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "tasks", ["group_id"], name: "index_tasks_on_group_id", using: :btree
