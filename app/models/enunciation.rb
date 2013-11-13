@@ -6,10 +6,10 @@ class Enunciation < ActiveRecord::Base
   validates :end_at, timeliness: { on_or_after: lambda { Date.today } }
   validates :name, :description, presence: true
 
-  has_many :groups
+  has_many :groups, dependent: :destroy
   has_many :grouped_students, class_name: 'Student', through: :groups, source: :students
   has_many :students, through: :crowd
-  has_many :attachments, as: :attachable
+  has_many :attachments, as: :attachable, dependent: :destroy
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true, reject_if: proc { |attributes| attributes['document'].blank? }
 

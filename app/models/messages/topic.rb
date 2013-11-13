@@ -3,7 +3,7 @@ module Messages
   class Topic < ActiveRecord::Base
     belongs_to :creator, :polymorphic => true
     belongs_to :circle, :polymorphic => true
-    has_many :messages
+    has_many :messages, dependent: :destroy
 
     validates :circle, :subject, :creator, :presence => true
     validates :circle_type, :inclusion => { :in => %w(Crowd Group) }

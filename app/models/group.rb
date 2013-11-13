@@ -1,9 +1,9 @@
 class Group < ActiveRecord::Base
   belongs_to :enunciation
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :students, through: :memberships
-  has_many :topics, class_name: 'Messages::Topic', as: :circle
-  has_many :tasks
+  has_many :topics, class_name: 'Messages::Topic', as: :circle, dependent: :destroy
+  has_many :tasks, dependent: :destroy
   has_one :repository, dependent: :destroy
   has_many :repo_versions, dependent: :destroy
 

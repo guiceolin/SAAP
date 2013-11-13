@@ -7,7 +7,7 @@ module Messages
     belongs_to :topic, touch: true
     has_one :circle, through: :topic
     belongs_to :sender, class_name: 'User'
-    has_many :deliveries
+    has_many :deliveries, class_name: '::Messages::Delivery', dependent: :destroy
     has_many :recipients, class_name: 'User', through: :deliveries
 
     validates :body, :sender, :topic, :presence => true
