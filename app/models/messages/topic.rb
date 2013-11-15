@@ -32,7 +32,7 @@ module Messages
     private
 
     def create_welcome_message
-      if self.approved && self.messages.none?
+      if self.approved && self.messages.none? && !self.soft_destroyed?
         messages << Messages::Message.create(sender: self.creator, body: I18n.t('messages.welcome_message'), readed: true)
       end
     end
