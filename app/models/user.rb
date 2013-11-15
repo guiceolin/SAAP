@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   include Gcal
 
   has_gcalendar summary: 'Teste', access_token: :oauth_access_token, refresh_token: :oauth_refresh_token
-  has_many :gtasks
+  has_many :gtasks, -> { where(deleted_at: nil) }
 
-  has_many :deliveries, class_name: 'Messages::Delivery', foreign_key: 'recipient_id'
+  has_many :deliveries, -> { where(deleted_at: nil) }, class_name: 'Messages::Delivery', foreign_key: 'recipient_id'
   has_many :messages, through: :deliveries, class_name: 'Messages::Message'
   has_many :pub_keys
 

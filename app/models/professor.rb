@@ -1,5 +1,5 @@
 class Professor < User
-  has_many :crowds, dependent: :restrict_with_error
+  has_many :crowds, -> { where(deleted_at: nil)}, dependent: :restrict_with_error
   has_many :enunciations, through: :crowds
   has_many :groups, through: :enunciations
 

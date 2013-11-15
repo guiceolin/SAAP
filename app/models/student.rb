@@ -1,8 +1,8 @@
 class Student < User
 
-  has_many :enrollments, dependent: :destroy
+  has_many :enrollments, -> { where(deleted_at: nil) }, dependent: :destroy
   has_many :crowds, through: :enrollments
-  has_many :memberships, dependent: :destroy
+  has_many :memberships, -> { where(deleted_at: nil) }, dependent: :destroy
   has_many :groups, through: :memberships
   has_many :repositories, through: :groups
 
