@@ -10,7 +10,7 @@ class Crowd < ActiveRecord::Base
 
   has_many :enrollments, dependent: :destroy
   has_many :students, through: :enrollments
-  has_many :topics, class_name: 'Messages::Topic', as: :circle, dependent: :destroy
+  has_many :topics, class_name: '::Messages::Topic', as: :circle, dependent: :destroy
 
   has_many :enunciations, dependent: :destroy
 
