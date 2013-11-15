@@ -4,6 +4,18 @@
     <%= f.input :description %>
     <%= f.association :crowd, disabled: true %>
     <%= f.input :end_at, as: :string, input_html: { class: 'datepicker'}  %>
+    <div class='form-group'>
+      <div class='controls'>
+        <label class='checkbox inline'>
+          <div class='checker'>
+            <span>
+              <%= f.input_field :accepts_after_deadline %>
+            </span>
+          </div>
+          <%= f.label :accepts_after_deadline %>
+        </label>
+      </div>
+    </div>
     <fieldset>
       <legend>
         Anexos

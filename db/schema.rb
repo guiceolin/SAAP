@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112234758) do
+ActiveRecord::Schema.define(version: 20131115034819) do
 
   create_table "activity_logs", force: true do |t|
     t.integer  "user_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20131112234758) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
+    t.boolean  "accepts_after_deadline", default: false
   end
 
   add_index "enunciations", ["crowd_id"], name: "index_enunciations_on_crowd_id", using: :btree

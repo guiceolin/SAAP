@@ -51,6 +51,7 @@ pt-BR:
       group:
         name: Nome
       enunciation:
+        accepts_after_deadline: Aceitar atrasado?
         name: Nome
         end_at: Data final
         description: Descrição
