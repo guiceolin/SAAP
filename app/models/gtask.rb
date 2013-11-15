@@ -1,4 +1,6 @@
 class Gtask < ActiveRecord::Base
+  require 'soft_destroy'
+  include SoftDestroy
   belongs_to :user
   belongs_to :task
 

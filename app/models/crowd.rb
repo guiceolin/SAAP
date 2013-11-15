@@ -1,5 +1,8 @@
+require 'soft_destroy'
 class Crowd < ActiveRecord::Base
   include Importable
+  include SoftDestroy
+
   belongs_to :professor
   belongs_to :subject
   validates :code, :name, :presence => true, uniqueness: { scope: [:subject, :year, :semester] }

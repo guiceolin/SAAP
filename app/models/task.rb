@@ -1,4 +1,6 @@
 class Task < ActiveRecord::Base
+  require 'soft_destroy'
+  include SoftDestroy
   belongs_to :group
   belongs_to :parent, class_name: 'Task'
   has_many :children, foreign_key: :parent_id, class_name: 'Task', dependent: :destroy

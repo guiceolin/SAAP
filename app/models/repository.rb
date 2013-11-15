@@ -1,4 +1,6 @@
 class Repository < ActiveRecord::Base
+  require 'soft_destroy'
+  include SoftDestroy
   validate :name, :url, presence: true
   belongs_to :group
   has_many :students, through: :group

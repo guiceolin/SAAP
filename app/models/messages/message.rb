@@ -1,6 +1,8 @@
 require 'messages'
 module Messages
   class Message < ActiveRecord::Base
+    require 'soft_destroy'
+    include SoftDestroy
 
     attr_accessor :readed
 

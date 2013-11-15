@@ -1,4 +1,6 @@
 class RepoVersion < ActiveRecord::Base
+  require 'soft_destroy'
+  include SoftDestroy
   belongs_to :group
   belongs_to :creator, class_name: "Student"
   has_one :repository, through: :group

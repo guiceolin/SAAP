@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
+  require 'soft_destroy'
+  include SoftDestroy
   belongs_to :enunciation
   has_many :memberships, dependent: :destroy
   has_many :students, through: :memberships
