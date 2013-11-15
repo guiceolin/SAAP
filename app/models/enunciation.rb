@@ -19,6 +19,10 @@ class Enunciation < ActiveRecord::Base
 
   after_save :log_activity
 
+  def accepting_versions?
+    end_at >= Time.now || accepts_after_deadline
+  end
+
   def ungrouped_students
     students - grouped_students
   end

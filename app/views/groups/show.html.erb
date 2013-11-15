@@ -102,7 +102,7 @@
       <h2>
         <%= RepoVersion.model_name.human(count: :many) %>
       </h2>
-      <%- if current_user.is_a?(Student) && @group.repository.any_commits? %>
+      <%- if current_user.is_a?(Student) && @group.repository.any_commits? && @group.enunciation.accepting_versions? %>
       <div class='box-icon'>
         <%= link_to "#", data: { toggle: "modal", target: "#myModal" } do %>
           <i class='icon-plus'></i>
