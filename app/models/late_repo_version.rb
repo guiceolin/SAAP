@@ -1,0 +1,2 @@
+class LateRepoVersion < RepoVersion
+end

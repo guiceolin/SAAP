@@ -26,7 +26,9 @@ module ApplicationHelper
   end
 
   def repo_version_label(repo_version)
-    if repo_version.is_a? FinalRepoVersion
+    if repo_version.is_a? LateRepoVersion
+      content_tag :span, I18n.t('git.tag.late_repo_version'), class: 'label label-danger'
+    elsif repo_version.is_a? FinalRepoVersion
       content_tag :span, I18n.t('git.tag.final_repo_version'), class: 'label label-success'
     elsif repo_version.is_a? OldRepoVersion
       content_tag :span, I18n.t('git.tag.old_repo_version'), class: 'label label-warning'

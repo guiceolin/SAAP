@@ -4,6 +4,7 @@ pt-BR:
     clone_html: 'Para clonar o repositório:<br /><pre>git clone %{url} PASTA<br />cd PASTA</pre>'
     existent_html: 'Para adicionar um repositório já existente: <br /> <pre> cd REPOSITORIO</br> git remote add origin %{url}</br> git push -u origin master</pre>'
     tag:
+      late_repo_version: Atrasada
       partial_repo_version: Parcial
       final_repo_version: Final
       old_repo_version: Antiga
