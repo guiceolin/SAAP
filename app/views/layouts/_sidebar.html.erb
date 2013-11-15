@@ -125,6 +125,11 @@
             <%- end %>
           </ul>
         </li>
+        <li>
+          <%= link_to destroyed_crowds_path do %>
+            <i class='icon-list'></i><span class='hidden-sm'><%= I18n.t('links.destroyed_crowds') %></span>
+          <% end %>
+        </li>
       <%- end %>
       <%- if can?(:manage, ActivityLog) %>
         <li>

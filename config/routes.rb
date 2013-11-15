@@ -10,6 +10,7 @@ SAAP::Application.routes.draw do
   resource :password_reset, only: [:new, :create, :edit, :update]
   resource :profile, only: [:show, :edit, :update]
 
+  resources :destroyed_crowds, only: :index
   resources :crowds, concerns: [:importable] do
     resources :enunciations do
       post :clone, on: :member
