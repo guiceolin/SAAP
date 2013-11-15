@@ -2,7 +2,7 @@ class CrowdsController < ApplicationController
   authorize_resource
   respond_to :html
   def index
-    @q = Crowd.search(params[:q])
+    @q = Crowd.not_soft_destroyed.search(params[:q])
     respond_with(@crowds = @q.result(distinct: true))
   end
 
